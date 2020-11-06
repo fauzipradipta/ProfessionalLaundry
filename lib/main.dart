@@ -21,7 +21,7 @@ class HomePage extends StatelessWidget{
         child: Container(
           width: double.infinity,
           height:MediaQuery.of(context).size.height,
-          padding: EdgeInsets.symmetric(horizontal:30, vertical: 50),
+          padding: EdgeInsets.symmetric(horizontal:30, vertical: 30),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -49,6 +49,7 @@ class HomePage extends StatelessWidget{
                   )
                 ),
               ),
+              //Login
               Column(
                 children: <Widget>[
                   MaterialButton(
@@ -76,14 +77,9 @@ class HomePage extends StatelessWidget{
                   SizedBox(height: 20,),
                   Container(
                     padding: EdgeInsets.only(top:3, left:3),
-                    decoration: BoxDecoration(
-                      border: Border(
-                      bottom:BorderSide(color: Colors.blue[900]),
-                      top:BorderSide(color: Colors.blue[900]),
-                      right:BorderSide(color: Colors.blue[900]),
-                      left:BorderSide(color: Colors.blue[900]),
-                      )
-                    ),
+                    // decoration: BoxDecoration(
+                    //
+                    // ),
                   
                     //Signup
                     child: MaterialButton(

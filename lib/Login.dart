@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:pl/Mainpage.dart';
 
 class LoginPage extends StatelessWidget{
   @override 
@@ -53,19 +54,24 @@ class LoginPage extends StatelessWidget{
                     child:Container(
                       padding: EdgeInsets.only(top:3, left:3),
                       decoration: BoxDecoration(
-                        border: Border(
-                        bottom:BorderSide(color: Colors.blue[900]),
-                        top:BorderSide(color: Colors.blue[900]),
-                        right:BorderSide(color: Colors.blue[900]),
-                        left:BorderSide(color: Colors.blue[900]),
-                        )
+                        // border: Border(
+                        // bottom:BorderSide(color: Colors.blue[900]),
+                        // top:BorderSide(color: Colors.blue[900]),
+                        // right:BorderSide(color: Colors.blue[900]),
+                        // left:BorderSide(color: Colors.blue[900]),
+                        // )
                       ),
                     
                       //LogIn Button
                       child: MaterialButton(
                         minWidth: double.infinity,
                         height: 60,
-                        onPressed: ()  {},
+                        onPressed: ()  {
+                              Navigator.push(context, MaterialPageRoute(
+                              builder: (context) => Mainpage()
+                            )
+                          );
+                        },
                         color:Colors.blue[900],
                         elevation: 0,
                         shape: RoundedRectangleBorder(              
@@ -89,8 +95,8 @@ class LoginPage extends StatelessWidget{
                     ],
                   ),
                 ],
-            ),
               ),
+            ),
           ],
         ),
       ),

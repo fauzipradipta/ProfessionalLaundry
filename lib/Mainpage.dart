@@ -1,24 +1,22 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+// import 'package:flutter/rendering.dart';
+import 'package:flutter/widgets.dart'; 
+import 'package:flutter/cupertino.dart';
 
-class SignupPage extends StatelessWidget{
+class Mainpage extends StatelessWidget{
+
+  int _currentIndex =0;
+
   @override 
   Widget build(BuildContext context){
     return Scaffold(
-      resizeToAvoidBottomInset: false,
       backgroundColor:Colors.blueAccent[700] ,
       appBar: AppBar(
-        brightness: Brightness.light,
-        backgroundColor: Colors.blueAccent[700],
-        leading: IconButton(
-          onPressed: (){
-            Navigator.pop(context);
-          },
-          icon: Icon(Icons.arrow_back_ios, size:20, color:Colors.white,),
-        ),
+        title: Text('Professional Laundry'),
       ),
+      
       body: SingleChildScrollView(
-        child: Container(
+         child: Container(
           padding: EdgeInsets.symmetric(horizontal: 40),
           height: MediaQuery.of(context).size.height ,
           width: double.infinity,
@@ -29,26 +27,30 @@ class SignupPage extends StatelessWidget{
                   child: Column(
                         children:<Widget>[
                           Column(children: <Widget>[
-                            Text("Sign Up",style:TextStyle(
+                            Text("Order",style:TextStyle(
                               fontSize: 30,
                               fontWeight: FontWeight.bold,
                             ),),
                             SizedBox(height: 20,),
-                            Text("Create an account", style:TextStyle(
+                            Text("Put your order below", style:TextStyle(
                               fontSize: 15,
                               color: Colors.white ),
                               ),
                           ],
                         ),
                         Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 40),
+                          padding: EdgeInsets.symmetric(horizontal: 10),
                           child: Column(
                             children: <Widget>[
-                              makeInput(label: "Email"),
-                              makeInput(label: "Password", obscureText:true),
-                              makeInput(label: "Confirm Password", obscureText: true),
-                              makeInput(label: "Birth of Data"),
-                              makeInput(label: "Home Address"),
+                              makeInput(label: "First Name"),
+                              makeInput(label: "Last Name", obscureText:true),
+                              makeInput(label: "Address", obscureText: true),
+                              makeInput(label: "City"),
+                              makeInput(label: "Zip code"),
+                              makeInput(label: "Phone Number"),
+
+                              
+
                             ],
                           ),
                         ),
@@ -67,7 +69,7 @@ class SignupPage extends StatelessWidget{
 
                             //Check Box for Liability Page
 
-                            //Sign Up Button
+                            //Order Button
                             child: MaterialButton(
                               minWidth: double.infinity,
                               height: 60,
@@ -77,7 +79,7 @@ class SignupPage extends StatelessWidget{
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(50)
                               ),
-                              child: Text('Sign Up', style: TextStyle(
+                              child: Text('Order', style: TextStyle(
                                 fontWeight: FontWeight.w600,
                                 color: Colors.white,
                                 fontSize: 18
@@ -101,8 +103,46 @@ class SignupPage extends StatelessWidget{
           ),
         ),
       ),
+
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _currentIndex,
+        type: BottomNavigationBarType.fixed,
+        items: [
+          BottomNavigationBarItem(
+           icon: Icon(Icons.add_shopping_cart),
+           // ignore: deprecated_member_use
+           title: Text("History"),
+           backgroundColor: Colors.black
+          ),
+
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings_sharp),
+            // ignore: deprecated_member_use
+            title: Text("Setting"),
+            backgroundColor: Colors.black
+          ),
+
+          BottomNavigationBarItem(
+            icon: Icon(Icons.money_sharp),
+            // ignore: deprecated_member_use
+            title: Text("Price"),
+            backgroundColor: Colors.black
+          ),
+
+          BottomNavigationBarItem(
+            icon: Icon(Icons.question_answer),
+            // ignore: deprecated_member_use
+            title: Text("Help"),
+            backgroundColor: Colors.black
+          ),
+        ],
+        onTap: (index) {
+          _currentIndex = index;
+        },
+      ),
     );
   }
+
   Widget makeInput({label,obscureText = false}){
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
