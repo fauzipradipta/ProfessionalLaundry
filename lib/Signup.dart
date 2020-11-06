@@ -41,8 +41,9 @@ class SignupPage extends StatelessWidget{
                           ],
                         ),
                         Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 40),
+                          padding: EdgeInsets.symmetric(horizontal: 8.0),
                           child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: <Widget>[
                               makeInput(label: "Email"),
                               makeInput(label: "Password", obscureText:true),
