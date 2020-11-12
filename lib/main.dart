@@ -3,11 +3,12 @@ import 'package:flutter/widgets.dart';
 import 'package:pl/Login.dart';
 //import 'package:pl/Login.dart';
 import 'package:pl/Signup.dart';
+import 'package:pl/Setting.dart';
 void main() {
   runApp(
     MaterialApp(
       debugShowCheckedModeBanner:false, 
-      home: HomePage(),
+      home: SettingPage(),
     )
   );
 }

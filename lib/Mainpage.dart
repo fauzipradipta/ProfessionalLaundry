@@ -226,6 +226,7 @@ class _MainpageState extends State<Mainpage> {
               title: Text("History"),
               backgroundColor: Colors.black),
           BottomNavigationBarItem(
+              
               icon: Icon(Icons.settings),
               // ignore: deprecated_member_use
               title: Text("Setting"),
