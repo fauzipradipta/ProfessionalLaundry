@@ -3,7 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter/cupertino.dart';
 
-class Mainpage extends StatelessWidget {
+class Mainpage extends StatefulWidget {
+  @override
+  _MainpageState createState() => _MainpageState();
+}
+
+class _MainpageState extends State<Mainpage> {
   int _currentIndex = 0;
 
   @override

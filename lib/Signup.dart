@@ -1,7 +1,33 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+//import 'package:pl/Liabiltypage.dart';
+import 'package:pl/Login.dart';
 
-class SignupPage extends StatelessWidget{
+class SignupPage extends StatefulWidget{
+  @override 
+  _SignupPage createState() => _SignupPage();
+}
+class _SignupPage extends State<SignupPage>{
+
+  bool checkBoxValue = false;  
+  
+  Widget checkbox(String title, bool boolValue){
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children:<Widget>[
+          Text(title),
+          Checkbox(
+            value: boolValue, 
+            onChanged:(bool value){
+              //manage state value
+              setState((){
+                  checkBoxValue = value;
+              });
+            }
+          )
+      ]
+    );
+  }
   @override 
   Widget build(BuildContext context){
     return Scaffold(
@@ -50,9 +76,23 @@ class SignupPage extends StatelessWidget{
                               makeInput(label: "Confirm Password", obscureText: true),
                               makeInput(label: "Birth of Data"),
                               makeInput(label: "Home Address"),
+
+                              //Check Box for Liability Page
+                              
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: <Widget>[
+                                  checkbox("Liability Page", checkBoxValue),
+                                ],
+                              ),
                             ],
                           ),
                         ),
+                        //Liability Page
+                        // CheckboxListTile(
+                        //   title: Text('Liability Page'),
+                          
+                        //   )
                         Padding(
                           padding: EdgeInsets.symmetric(horizontal: 40),
                           child:Container(
@@ -66,13 +106,17 @@ class SignupPage extends StatelessWidget{
                               )
                             ),
 
-                            //Check Box for Liability Page
 
                             //Sign Up Button
                             child: MaterialButton(
                               minWidth: double.infinity,
                               height: 60,
-                              onPressed: ()  {},
+                              onPressed: ()  {
+                                 Navigator.push(context, MaterialPageRoute(
+                                  builder: (context) => LoginPage()
+                                  )
+                                );
+                              },
                               color:Colors.blue[900],
                               elevation: 0,
                               shape: RoundedRectangleBorder(
