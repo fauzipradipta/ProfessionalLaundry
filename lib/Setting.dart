@@ -1,58 +1,58 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
-class SettingPage extends StatelessWidget{  
-  @override 
-  Widget build(BuildContext context){
-    return Scaffold(
-        resizeToAvoidBottomInset: false,
-      backgroundColor:Colors.blueAccent[700] ,
-      appBar: AppBar(
-        brightness: Brightness.light,
-        backgroundColor: Colors.blueAccent[700],
-        leading: IconButton(
-          onPressed: (){
-            Navigator.pop(context);
-          },
-          icon: Icon(Icons.arrow_back_ios, size:20, color:Colors.white,),
-        ),
-      ),
 
-      body: Container(
-        height: 50.0,
-        //My Profile Page Button 
-        child: GestureDetector(
-          onTap:(){}, 
-          child: Container(
-            decoration: BoxDecoration(
-              border: Border.all(
-                 color: Color(0xFFF05A22),
-                 style: BorderStyle.solid,
-                 width: 1.0,
-              ),
-              color:Colors.transparent, 
-              borderRadius: BorderRadius.circular(30.0),
-            ),
-            child:Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Center(
-                  child: Text(
-                    "My Profile",
-                    style: TextStyle(
-                                color: Color(0xFFF05A22),
-                                fontFamily: 'Montserrat',
-                                fontSize: 16,
-                                fontWeight: FontWeight.w600,
-                                letterSpacing: 1,
+class SettingPage extends StatefulWidget{
+  @override
+  _SettingPage createState() => _SettingPage();
+}
+
+class _SettingPage extends State<SettingPage>{
+  @override
+  Widget build(BuildContext context){
+    return  SafeArea(
+        //My Profile Button
+        child: Container(
+          width:double.infinity,
+          height: MediaQuery.of(context).size.height,
+          padding: EdgeInsets.symmetric(horizontal: 30, vertical:30),
+            child:Column(
+              children:<Widget> [
+                FlatButton(
+                  minWidth:double.infinity,
+                  height: 60,
+                  onPressed: (){},
+                  color:Colors.white,
+                  shape:RoundedRectangleBorder(
+                    borderRadius: (BorderRadius.circular(15)),
+                    side:BorderSide(
+                        color: Colors.black
+                    ),
                   ),
+                    child:Text("My Profile")
                 ),
-              )],
+
+                    //Payment Method Button
+                    Column(
+                      children:<Widget>[
+                        FlatButton(
+                          minWidth: double.infinity,
+                          height:60,
+                          onPressed: (){},
+                          color:Colors.white,
+                          shape:RoundedRectangleBorder(
+                            borderRadius: (BorderRadius.circular(15)),
+                            side:BorderSide(
+                              color:Colors.black
+                            ),
+                          ),
+                            child:Text("Payment Method")
+                        ),
+                      ],
+                    ),
+                  ],
             ),
           ),
-        ),
-         
-      ), 
-    );
-  }  
+        );      
+  }
 }
