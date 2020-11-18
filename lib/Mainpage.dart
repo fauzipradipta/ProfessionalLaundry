@@ -44,21 +44,22 @@ class _MainpageState extends State<Mainpage> {
               // ignore: deprecated_member_use
               title: Text("History"),
               backgroundColor: Colors.black),
+
           BottomNavigationBarItem(
               icon: Icon(Icons.settings),
               // ignore: deprecated_member_use
               title: Text("Setting"),
               backgroundColor: Colors.black),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.monetization_on),
-              // ignore: deprecated_member_use
-              title: Text("Price"),
-              backgroundColor: Colors.black),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.question_answer),
-              // ignore: deprecated_member_use
-              title: Text("Help"),
-              backgroundColor: Colors.black),
+          // BottomNavigationBarItem(
+          //     icon: Icon(Icons.monetization_on),
+          //     // ignore: deprecated_member_use
+          //     title: Text("Price"),
+          //     backgroundColor: Colors.black),
+          // BottomNavigationBarItem(
+          //     icon: Icon(Icons.question_answer),
+          //     // ignore: deprecated_member_use
+          //     title: Text("Help"),
+          //     backgroundColor: Colors.black),
         ],
         currentIndex: _currentIndex,
         type: BottomNavigationBarType.fixed,

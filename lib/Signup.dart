@@ -4,12 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:pl/Login.dart';
 
 class SignupPage extends StatefulWidget{
+  final String title = 'Registration';
   @override 
   _SignupPage createState() => _SignupPage();
 }
 class _SignupPage extends State<SignupPage>{
 
-  bool checkBoxValue = false;  
+  bool checkBoxValue = false;
+
   
   Widget checkbox(String title, bool boolValue){
     return Column(
@@ -30,6 +32,16 @@ class _SignupPage extends State<SignupPage>{
   }
   @override 
   Widget build(BuildContext context){
+
+    final GlobalKey<FormState> _formKey = GlobalKey<FormState>();        //Validating the user's Email and Password
+
+    //Tracking all the changes to those text file
+    final TextEditingController _emailController = TextEditingController();
+    final TextEditingController _passwordController = TextEditingController();
+
+    bool _success;
+    String _userEmail;
+
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor:Colors.blueAccent[700] ,
@@ -43,108 +55,133 @@ class _SignupPage extends State<SignupPage>{
           icon: Icon(Icons.arrow_back_ios, size:20, color:Colors.white,),
         ),
       ),
-      body: SingleChildScrollView(
-        child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 40),
-          height: MediaQuery.of(context).size.height ,
-          width: double.infinity,
-          child: Column(
-               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                Expanded(         //Expanded to expand element on the page
-                  child: Column(
-                        children:<Widget>[
-                          Column(children: <Widget>[
-                            Text("Sign Up",style:TextStyle(
-                              fontSize: 30,
-                              fontWeight: FontWeight.bold,
-                            ),),
-                            SizedBox(height: 20,),
-                            Text("Create an account", style:TextStyle(
-                              fontSize: 15,
-                              color: Colors.white ),
-                              ),
-                          ],
-                        ),
-                        Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 8.0),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: <Widget>[
-                              makeInput(label: "Email"),
-                              makeInput(label: "Password", obscureText:true),
-                              makeInput(label: "Confirm Password", obscureText: true),
-                              makeInput(label: "Birth of Data"),
-                              makeInput(label: "Home Address"),
-
-                              //Check Box for Liability Page
-                              
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[
-                                  checkbox("Liability Page", checkBoxValue),
-                                ],
-                              ),
+      body: Form(
+        key: _formKey,
+        child:SingleChildScrollView(
+          child: Container(
+            padding: EdgeInsets.symmetric(horizontal: 40),
+            height: MediaQuery.of(context).size.height ,
+            width: double.infinity,
+            child: Column(
+                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  Expanded(         //Expanded to expand element on the page
+                    child: Column(
+                          children:<Widget>[
+                            Column(children: <Widget>[
+                              Text("Sign Up",style:TextStyle(
+                                fontSize: 30,
+                                fontWeight: FontWeight.bold,
+                              ),),
+                              SizedBox(height: 20,),
+                              Text("Create an account", style:TextStyle(
+                                fontSize: 15,
+                                color: Colors.white ),
+                                ),
                             ],
                           ),
-                        ),
-                        //Liability Page
-                        // CheckboxListTile(
-                        //   title: Text('Liability Page'),
-                          
-                        //   )
-                        Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 40),
-                          child:Container(
-                            padding: EdgeInsets.only(top:3, left:3),
-                            decoration: BoxDecoration(
-                              border: Border(
-                              bottom:BorderSide(color: Colors.blue[900]),
-                              top:BorderSide(color: Colors.blue[900]),
-                              right:BorderSide(color: Colors.blue[900]),
-                              left:BorderSide(color: Colors.blue[900]),
-                              )
+                          Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 8.0),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: <Widget>[
+                                TextFormField(
+                                  controller: _emailController,
+                                  decoration: const InputDecoration(labelText: "Email"),
+                                  validator: (String value){
+                                    if(value.isEmpty){
+                                      return 'Please enter an Email';
+                                    }
+                                    return null;
+                                  },
+                                ),
+
+
+                                TextFormField(
+                                  controller: _passwordController,
+                                  decoration: const InputDecoration(labelText: "Password"),
+                                  validator: (String value){
+                                    if(value.isEmpty){
+                                      return "Please put password";
+                                    }
+                                    return null;
+                                  },
+                                ),
+                                // makeInput(label: "Email"),
+                                // makeInput(label: "Password", obscureText:true),
+                                // makeInput(label: "Confirm Password", obscureText: true),
+                                // makeInput(label: "Birth of Data"),
+                                // makeInput(label: "Home Address"),
+
+                                //Check Box for Liability Page
+
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: <Widget>[
+                                    checkbox("Liability Page", checkBoxValue),
+                                  ],
+                                ),
+                              ],
                             ),
+                          ),
+                          //Liability Page
+                          // CheckboxListTile(
+                          //   title: Text('Liability Page'),
 
-
-                            //Sign Up Button
-                            child: MaterialButton(
-                              minWidth: double.infinity,
-                              height: 60,
-                              onPressed: ()  {
-                                 Navigator.push(context, MaterialPageRoute(
-                                  builder: (context) => LoginPage()
-                                  )
-                                );
-                              },
-                              color:Colors.blue[900],
-                              elevation: 0,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(50)
+                          //   )
+                          Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 40),
+                            child:Container(
+                              padding: EdgeInsets.only(top:3, left:3),
+                              decoration: BoxDecoration(
+                                border: Border(
+                                bottom:BorderSide(color: Colors.blue[900]),
+                                top:BorderSide(color: Colors.blue[900]),
+                                right:BorderSide(color: Colors.blue[900]),
+                                left:BorderSide(color: Colors.blue[900]),
+                                )
                               ),
-                              child: Text('Sign Up', style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                color: Colors.white,
-                                fontSize: 18
+
+
+                              //Sign Up Button
+                              child: MaterialButton(
+                                minWidth: double.infinity,
+                                height: 60,
+                                onPressed: () async {
+                                   Navigator.push(context, MaterialPageRoute(
+                                    builder: (context) => LoginPage()
+                                    )
+                                  );
+                                },
+                                color:Colors.blue[900],
+                                elevation: 0,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(50)
+                                ),
+                                child: Text('Sign Up', style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.white,
+                                  fontSize: 18
+                                  ),),
+                              ),
+                             )
+                          ),
+                           Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              Text("Already have an account?"),
+                              Text("Login", style:TextStyle(
+                                fontWeight: FontWeight.w600, fontSize: 18
                                 ),),
-                            ),
-                           )
-                        ),
-                         Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Text("Already have an account?"),
-                            Text("Login", style:TextStyle(
-                              fontWeight: FontWeight.w600, fontSize: 18
-                              ),),
-                          ],
-                        ),
-                      ],
+                            ],
+                          ),
+                        ],
+                    ),
                   ),
-                ),
-            ],
+              ],
+            ),
           ),
-        ),
+          ),
       ),
     );
   }
