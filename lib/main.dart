@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
-import 'package:pl/Login.dart';
-import 'package:pl/Signup.dart';
+import 'package:pl/Screens/Login.dart';
+// import 'package:pl/Screens/Mainpage.dart';
+import 'package:pl/Screens/Signup.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+void main() async {
   runApp(
     MaterialApp(
       debugShowCheckedModeBanner:false, 
@@ -12,7 +15,19 @@ void main() {
   );
 }
 
-class HomePage extends StatelessWidget{
+class HomePage extends StatefulWidget{
+
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
+  void initState() {
+    Firebase.initializeApp();
+    super.initState();
+  }
+
   @override 
   Widget build(BuildContext context){
     return Scaffold(
@@ -56,10 +71,8 @@ class HomePage extends StatelessWidget{
                     minWidth: double.infinity,
                     height: 60, 
                     onPressed:() {
-                      Navigator.push(context, MaterialPageRoute(
-                          builder: (context) => LoginPage()
-                        )
-                      );
+                     //future: Firebase.initializeApp();
+                     Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => LoginPage()));
                     }, 
                     color:Colors.blue[900],
                     shape: RoundedRectangleBorder(
@@ -86,11 +99,9 @@ class HomePage extends StatelessWidget{
                       minWidth: double.infinity,
                       height: 60,
                       onPressed:() {
-                      Navigator.push(context, MaterialPageRoute(
-                          builder: (context) => SignupPage()
-                        )
-                      );
-                    }, 
+                        //future: Firebase.initializeApp();
+                        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => SignupPage()));
+                      }, 
                       color:Colors.blue[900],
                       elevation: 0,
                       shape: RoundedRectangleBorder(              
@@ -110,6 +121,6 @@ class HomePage extends StatelessWidget{
         ),
       ),
     );
-  }
+  }  
 }
 

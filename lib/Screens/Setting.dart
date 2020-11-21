@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:pl/Screens/Login.dart';
 
 class SettingPage extends StatefulWidget{
   @override
@@ -8,6 +9,7 @@ class SettingPage extends StatefulWidget{
 }
 
 class _SettingPage extends State<SettingPage>{
+  final auth = FirebaseAuth.instance;
   @override
   Widget build(BuildContext context){
     return  SafeArea(
@@ -50,9 +52,11 @@ class _SettingPage extends State<SettingPage>{
                         ),
                       ],
                     ),
-                  ],
+                 ],
             ),
+
           ),
-        );      
+        );
+
   }
 }

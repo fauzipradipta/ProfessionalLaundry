@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:pl/Mainpage.dart';
-
+//import 'package:pl/Screens/Mainpage.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:pl/Screens/Mainpage.dart';
 
 class LoginPage extends StatefulWidget{
   @override 
@@ -9,6 +10,13 @@ class LoginPage extends StatefulWidget{
 }
 
 class _LoginPageState extends State<LoginPage>{
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController nameController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+  TextEditingController ageController = TextEditingController();
+
+  final auth = FirebaseAuth.instance;
+  
   @override 
   Widget build(BuildContext context){
     return Scaffold(
@@ -46,15 +54,47 @@ class _LoginPageState extends State<LoginPage>{
                       ),),
                     ],
                   ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 40),
-                    child: Column(
-                      children: <Widget>[
-                        makeInput(label: "Email"),
-                        makeInput(label: "Password", obscureText:true),
-                      ],
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 8.0),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: <Widget>[
+                          TextFormField(
+                            keyboardType: TextInputType.emailAddress,
+                            controller: _emailController,
+                            decoration:
+                            const InputDecoration(labelText: "Email"),
+                            validator: (String value) {
+                              if (value.isEmpty) {
+                                return 'Please enter an Email';
+                              }
+                              return null;
+                            },
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
+
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: <Widget>[
+                          TextFormField(
+                            controller: _passwordController,
+                            obscureText: true,
+                            decoration:
+                            const InputDecoration(labelText: "Password"),
+                            validator: (String value) {
+                              if (value.isEmpty) {
+                                return "Please put password";
+                              }
+                              return null;
+                            },
+                          ),
+                        ],
+                      ),
+                    ),
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 40),
                     child:Container(
@@ -69,26 +109,24 @@ class _LoginPageState extends State<LoginPage>{
                       ),
                     
                       //LogIn Button
-                      child: MaterialButton(
-                        minWidth: double.infinity,
-                        height: 60,
-                        onPressed: ()  {
-                              Navigator.push(context, MaterialPageRoute(
-                              builder: (context) => Mainpage()
-                            )
-                          );
+                      child: RaisedButton(
+
+                        onPressed: () {
+                            auth.signInWithEmailAndPassword(email: _emailController.text, password: _passwordController.text).then((_){
+                            Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => Mainpage()));
+                          });
                         },
                         color:Colors.blue[900],
                         elevation: 0,
-                        shape: RoundedRectangleBorder(              
+                        shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(50)
-                        ),  
+                        ),
                         child: Text('Login', style: TextStyle(
                           fontWeight: FontWeight.w600,
                           color: Colors.white,
-                          fontSize: 18 
+                          fontSize: 18
                           ),),
-                      ), 
+                      ),
                      )
                   ),
                   Row(
@@ -108,6 +146,8 @@ class _LoginPageState extends State<LoginPage>{
       ),
     );
   }
+
+
   Widget makeInput({label,obscureText = false}){
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "551533014263",
+    "firebase_url": "https://professional-laund.firebaseio.com",
+    "project_id": "professional-laund",
+    "storage_bucket": "professional-laund.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:551533014263:android:b5aeafa128d1da9c9477f2",
+        "android_client_info": {
+          "package_name": "com.example.pl"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "551533014263-e6cc26h3bp54b3vjma4mn4uk1e7ru9cu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyASmQb4JjfQ9U8dovP-TGUcaDasci8B_n8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "551533014263-e6cc26h3bp54b3vjma4mn4uk1e7ru9cu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
