@@ -52,9 +52,24 @@ class _SettingPage extends State<SettingPage>{
                         ),
                       ],
                     ),
+                Column(
+                  children: <Widget>[
+                    FlatButton(
+
+                      onPressed: (){
+                        auth.signOut();
+                        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => LoginPage()));
+                      },
+                     child: Text('LogOut', style: TextStyle(
+                                 fontWeight:FontWeight.w600,
+                                  color: Colors.white,
+                                   fontSize: 15 ),
+                      ),
+                    ),
+                  ],
+                )
                  ],
             ),
-
           ),
         );
 

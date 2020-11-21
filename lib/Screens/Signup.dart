@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-// import 'package:group_chat_app/pages/test.dart';
 import 'package:pl/Screens/Mainpage.dart';
+import 'package:pl/main.dart';
 
 class SignupPage extends StatefulWidget {
   final String title = 'Registration';
@@ -53,7 +53,7 @@ class _SignupPage extends State<SignupPage> {
         backgroundColor: Colors.blueAccent[700],
         leading: IconButton(
           onPressed: () {
-            Navigator.pop(context);
+            Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => HomePage()));
           },
           icon: Icon(
             Icons.arrow_back_ios,
@@ -143,7 +143,7 @@ class _SignupPage extends State<SignupPage> {
 
                       //Check Box for Liability Page
 
-                      Row(
+                      Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           checkbox("Liability Page", checkBoxValue),

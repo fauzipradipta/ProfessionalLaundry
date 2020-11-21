@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-//import 'package:pl/Screens/Mainpage.dart';
+import 'package:pl/main.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:pl/Screens/Mainpage.dart';
 
@@ -27,7 +27,7 @@ class _LoginPageState extends State<LoginPage>{
         backgroundColor: Colors.blueAccent[700],
         leading: IconButton(
           onPressed: (){
-            Navigator.pop(context);
+            Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => HomePage()));
           },
           icon: Icon(Icons.arrow_back_ios, size:20, color:Colors.white,),
         ),
@@ -110,9 +110,8 @@ class _LoginPageState extends State<LoginPage>{
                     
                       //LogIn Button
                       child: RaisedButton(
-
                         onPressed: () {
-                            auth.signInWithEmailAndPassword(email: _emailController.text, password: _passwordController.text).then((_){
+                          auth.signInWithEmailAndPassword(email: _emailController.text, password: _passwordController.text).then((_){
                             Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => Mainpage()));
                           });
                         },
