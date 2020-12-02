@@ -4,6 +4,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:pl/Screens/History.dart';
 import 'package:pl/Screens/Setting.dart';
 import 'package:pl/Screens/Bodymainpage.dart';
+import 'package:pl/Screens/PricePage.dart';
+import 'package:pl/Screens/Help.dart';
 
 class Mainpage extends StatefulWidget {
   @override
@@ -17,7 +19,8 @@ class _MainpageState extends State<Mainpage> {
     BodyMainPage(),
     HistoryPage(),
     SettingPage(),
-    
+    PricePage(),
+    HelpPage()
   ];
 
  
@@ -51,16 +54,16 @@ class _MainpageState extends State<Mainpage> {
               // ignore: deprecated_member_use
               title: Text("Setting"),
               backgroundColor: Colors.black),
-          // BottomNavigationBarItem(
-          //     icon: Icon(Icons.monetization_on),
-          //     // ignore: deprecated_member_use
-          //     title: Text("Price"),
-          //     backgroundColor: Colors.black),
-          // BottomNavigationBarItem(
-          //     icon: Icon(Icons.question_answer),
-          //     // ignore: deprecated_member_use
-          //     title: Text("Help"),
-          //     backgroundColor: Colors.black),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.monetization_on),
+              // ignore: deprecated_member_use
+              title: Text("Price"),
+              backgroundColor: Colors.black),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.question_answer),
+              // ignore: deprecated_member_use
+              title: Text("Help"),
+              backgroundColor: Colors.black),
         ],
         currentIndex: _currentIndex,
         type: BottomNavigationBarType.fixed,

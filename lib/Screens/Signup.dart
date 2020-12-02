@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:pl/Screens/Mainpage.dart';
+import 'package:pl/Screens/Liabiltypage.dart';
 import 'package:pl/main.dart';
 
 class SignupPage extends StatefulWidget {
@@ -27,21 +27,21 @@ class _SignupPage extends State<SignupPage> {
 
   bool checkBoxValue = false;
 
-  Widget checkbox(String title, bool boolValue) {
-    return Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Text(title),
-          Checkbox(
-              value: boolValue,
-              onChanged: (bool value) {
-                //manage state value
-                setState(() {
-                  checkBoxValue = value;
-                });
-              })
-        ]);
-  }
+  // Widget checkbox(String title, bool boolValue) {
+  //   return Column(
+  //       mainAxisAlignment: MainAxisAlignment.center,
+  //       children: <Widget>[
+  //         Text(title),
+  //         Checkbox(
+  //             value: boolValue,
+  //             onChanged: (bool value) {
+  //               //manage state value
+  //               setState(() {
+  //                 checkBoxValue = value;
+  //               });
+  //             })
+  //       ]);
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -143,12 +143,12 @@ class _SignupPage extends State<SignupPage> {
 
                       //Check Box for Liability Page
 
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          checkbox("Liability Page", checkBoxValue),
-                        ],
-                      ),
+                      // Column(
+                      //   mainAxisAlignment: MainAxisAlignment.center,
+                      //   children: <Widget>[
+                      //     checkbox("Liability Page", checkBoxValue),
+                      //   ],
+                      // ),
 
                       // padding: EdgeInsets.symmetric(horizontal: 40),
                       // child:Container(
@@ -173,7 +173,7 @@ class _SignupPage extends State<SignupPage> {
                                 .then((_) async {
                               Navigator.of(context).pushReplacement(
                                   MaterialPageRoute(
-                                      builder: (context) => Mainpage()));
+                                      builder: (context) => LiabilityPage()));
                             });
                           },
                           child: const Text('Sign Up'),
