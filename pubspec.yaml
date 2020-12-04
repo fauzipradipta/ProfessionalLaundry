@@ -60,6 +60,7 @@ flutter:
     - assets/images/windjacket.jpg
     - assets/Liability_Page.jpg
     - assets/Liability_PageSignUp.jpg
+    - assets\price2.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

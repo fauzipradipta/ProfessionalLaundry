@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:pl/Screens/Setting.dart';
 
 class MyProfilePage extends StatefulWidget {
   @override
@@ -11,26 +12,24 @@ class MyProfilePage extends StatefulWidget {
 class _MyProfilePageState extends State<MyProfilePage> {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 8.0),
-          child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: <Widget>[
-            TextFormField(
-              keyboardType: TextInputType.emailAddress,
-              decoration:
-              const InputDecoration(labelText: "First Name"),
-              validator: (String value) {
-              if (value.isEmpty) {
-                return 'Please put a First Name';
-                }
-                return null;
-              },
-            ),
-          ],
+    return Scaffold(
+       resizeToAvoidBottomInset: false,
+       backgroundColor: Colors.blueAccent[700],
+       appBar: AppBar(
+        brightness: Brightness.light,
+        backgroundColor: Colors.blueAccent[700],
+        leading: IconButton(
+          onPressed: () {
+            Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => SettingPage()));
+          },
+          icon: Icon(
+            Icons.arrow_back_ios,
+            size: 20,
+            color: Colors.white,
+          ),
         ),
-      ),
+       ),
+
     );
   }
 }

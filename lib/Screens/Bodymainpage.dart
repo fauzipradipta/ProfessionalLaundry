@@ -33,17 +33,17 @@ class  BodyMainPage extends StatelessWidget {
                   ),
                 ],
               ),
-              makeInput(label: "First Name"),
-              makeInput(label: "Last Name"),
-              makeInput(label: "Address"),
-              makeInput(label: "City"),
-              makeInput(label: "Zip code"),
-              makeInput(label: "Phone Number"),
+              // makeInput(label: "First Name"),
+              // makeInput(label: "Last Name"),
+              // makeInput(label: "Address"),
+              // makeInput(label: "City"),
+              // makeInput(label: "Zip code"),
+              // makeInput(label: "Phone Number"),
               SizedBox(
                 height: 5,
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 100),
+                padding: EdgeInsets.only(top: 25),
                 child: Row(
                   children: [
                     Image.asset('assets/images/buttonDownShirt.jpg'),
@@ -55,7 +55,7 @@ class  BodyMainPage extends StatelessWidget {
                           hintText: "Qty",
                           hintStyle: TextStyle(
                             fontSize: 12,
-                            color: Color(0xFF464A7E),
+                            color: Colors.white,
                           ),
                           contentPadding: EdgeInsets.symmetric(
                             horizontal: 20,
@@ -68,7 +68,7 @@ class  BodyMainPage extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 100),
+                 padding: EdgeInsets.only(top: 25),
                 child: Row(
                   children: [
                     Image.asset('assets/images/blouse.jpg'),
@@ -80,7 +80,7 @@ class  BodyMainPage extends StatelessWidget {
                           hintText: "Qty",
                           hintStyle: TextStyle(
                             fontSize: 12,
-                            color: Color(0xFF464A7E),
+                            color: Colors.white,
                           ),
                           contentPadding: EdgeInsets.symmetric(
                             horizontal: 20,
@@ -93,7 +93,7 @@ class  BodyMainPage extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 100),
+                 padding: EdgeInsets.only(top: 25),
                 child: Row(
                   children: [
                     Image.asset('assets/images/pants.jpg'),
@@ -105,7 +105,7 @@ class  BodyMainPage extends StatelessWidget {
                           hintText: "Qty",
                           hintStyle: TextStyle(
                             fontSize: 12,
-                            color: Color(0xFF464A7E),
+                            color: Colors.white,
                           ),
                           contentPadding: EdgeInsets.symmetric(
                             horizontal: 20,
@@ -118,7 +118,7 @@ class  BodyMainPage extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 100),
+                 padding: EdgeInsets.only(top: 25),
                 child: Row(
                   children: [
                     Image.asset('assets/images/dress.jpg'),
@@ -130,7 +130,7 @@ class  BodyMainPage extends StatelessWidget {
                           hintText: "Qty",
                           hintStyle: TextStyle(
                             fontSize: 12,
-                            color: Color(0xFF464A7E),
+                            color: Colors.white,
                           ),
                           contentPadding: EdgeInsets.symmetric(
                             horizontal: 20,
@@ -143,43 +143,46 @@ class  BodyMainPage extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 100),
+               // padding: const EdgeInsets.symmetric(horizontal: 10),
+                padding: EdgeInsets.only(top: 25),
                 child: Row(
                   children: [
                     Image.asset('assets/images/windjacket.jpg'),
-                    SizedBox(
-                      width: 100,
-                      child: TextField(
-                        style: TextStyle(color: Colors.black),
-                        decoration: InputDecoration(
-                          hintText: "Qty",
-                          hintStyle: TextStyle(
-                            fontSize: 12,
-                            color: Color(0xFF464A7E),
-                          ),
-                          contentPadding: EdgeInsets.symmetric(
-                            horizontal: 20,
-                            vertical: 20,
+                    SizedBox(                  
+                        width: 100,
+                        child: TextField(
+                          style: TextStyle(color: Colors.black),
+                          decoration: InputDecoration(                            
+                            hintText: "Qty",
+                            hintStyle: TextStyle(
+                              fontSize: 12,
+                              color: Colors.white,
+                            ),
+                            contentPadding: EdgeInsets.symmetric(
+                              horizontal: 20,
+                              vertical: 20,
+                            ),
                           ),
                         ),
                       ),
-                    )
                   ],
                 ),
               ),
+              // Padding(
+              //     padding: EdgeInsets.symmetric(horizontal: 40),
+              //     child: Container(
+              //       padding: EdgeInsets.only(top: 1, left: 3),
+              //       decoration: BoxDecoration(
+              //           border: Border(
+              //             bottom: BorderSide(color: Colors.blue[900]),
+              //             top: BorderSide(color: Colors.blue[900]),
+              //             right: BorderSide(color: Colors.blue[900]),
+              //             left: BorderSide(color: Colors.blue[900]),
+              //           )),                
+              //     ),
+              // ),
               Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 40),
-                  child: Container(
-                    padding: EdgeInsets.only(top: 3, left: 3),
-                    decoration: BoxDecoration(
-                        border: Border(
-                          bottom: BorderSide(color: Colors.blue[900]),
-                          top: BorderSide(color: Colors.blue[900]),
-                          right: BorderSide(color: Colors.blue[900]),
-                          left: BorderSide(color: Colors.blue[900]),
-                        )),
-                    //Check Box for Liability Page
-
+                padding: EdgeInsets.only(top:15),
                     //Order Button
                     child: MaterialButton(
                       minWidth: double.infinity,
@@ -197,7 +200,7 @@ class  BodyMainPage extends StatelessWidget {
                             fontSize: 18),
                       ),
                     ),
-                  )),
+              )
             ],
           ),
         ),
