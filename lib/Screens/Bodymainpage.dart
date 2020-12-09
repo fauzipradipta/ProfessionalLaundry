@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:pl/Screens/History.dart';
+//import 'package:pl/models/Clothes_model.dart';
 
 class  BodyMainPage extends StatelessWidget {
 
@@ -46,25 +48,39 @@ class  BodyMainPage extends StatelessWidget {
                 padding: EdgeInsets.only(top: 25),
                 child: Row(
                   children: [
-                    Image.asset('assets/images/buttonDownShirt.jpg'),
-                    SizedBox(
-                      width: 100,
-                      child: TextField(
-                        style: TextStyle(color: Colors.black),
-                        decoration: InputDecoration(
-                          hintText: "Qty",
-                          hintStyle: TextStyle(
-                            fontSize: 12,
-                            color: Colors.white,
+                    Image.asset('assets/images/buttonDownShirt.jpg'),                   
+                    Padding(
+                      padding:  EdgeInsets.only(left:10),
+                      child: Text('Button Down Shirt', 
+                            style: TextStyle(
+                              fontWeight:FontWeight.w600,
+                              color: Colors.white,
+                              fontSize: 15
+                            )
                           ),
-                          contentPadding: EdgeInsets.symmetric(
-                            horizontal: 20,
-                            vertical: 20,
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(left:55),
+                      child: SizedBox(                      
+                        width: 100,
+                        child: TextField(
+                          style: TextStyle(color: Colors.black),
+                          decoration: InputDecoration(
+                            hintText: "Qty",
+                            hintStyle: TextStyle(
+                              fontSize: 12,
+                              color: Colors.white,
+                            ),
+                            contentPadding: EdgeInsets.symmetric(
+                              horizontal: 20,
+                              vertical: 20,
+                            ),
                           ),
                         ),
                       ),
                     )
                   ],
+                                  
                 ),
               ),
               Padding(
@@ -72,19 +88,32 @@ class  BodyMainPage extends StatelessWidget {
                 child: Row(
                   children: [
                     Image.asset('assets/images/blouse.jpg'),
-                    SizedBox(
-                      width: 100,
-                      child: TextField(
-                        style: TextStyle(color: Colors.black),
-                        decoration: InputDecoration(
-                          hintText: "Qty",
-                          hintStyle: TextStyle(
-                            fontSize: 12,
-                            color: Colors.white,
+                    Padding(
+                      padding: const EdgeInsets.only(left: 20),
+                      child: Text('Blouse', 
+                             style: TextStyle(
+                              fontWeight:FontWeight.w600,
+                              color: Colors.white,
+                              fontSize: 15
+                             )
                           ),
-                          contentPadding: EdgeInsets.symmetric(
-                            horizontal: 20,
-                            vertical: 20,
+                    ),
+                    Padding(
+                      padding:  EdgeInsets.only(left: 130),
+                      child: SizedBox(
+                        width: 100,
+                        child: TextField(
+                          style: TextStyle(color: Colors.black),
+                          decoration: InputDecoration(
+                            hintText: "Qty",
+                            hintStyle: TextStyle(
+                              fontSize: 12,
+                              color: Colors.white,
+                            ),
+                            contentPadding: EdgeInsets.symmetric(
+                              horizontal: 20,
+                              vertical: 20,
+                            ),
                           ),
                         ),
                       ),
@@ -97,19 +126,32 @@ class  BodyMainPage extends StatelessWidget {
                 child: Row(
                   children: [
                     Image.asset('assets/images/pants.jpg'),
-                    SizedBox(
-                      width: 100,
-                      child: TextField(
-                        style: TextStyle(color: Colors.black),
-                        decoration: InputDecoration(
-                          hintText: "Qty",
-                          hintStyle: TextStyle(
-                            fontSize: 12,
-                            color: Colors.white,
-                          ),
-                          contentPadding: EdgeInsets.symmetric(
-                            horizontal: 20,
-                            vertical: 20,
+                     Padding(
+                       padding: EdgeInsets.only(left:30),
+                       child: Text('Pants', 
+                              style: TextStyle(
+                                fontWeight:FontWeight.w600,
+                                color: Colors.white,
+                                fontSize: 15
+                              )
+                            ),
+                     ),
+                    Padding(
+                      padding:  EdgeInsets.only(left: 130),
+                      child: SizedBox(
+                        width: 100,
+                        child: TextField(
+                          style: TextStyle(color: Colors.black),
+                          decoration: InputDecoration(
+                            hintText: "Qty",
+                            hintStyle: TextStyle(
+                              fontSize: 12,
+                              color: Colors.white,
+                            ),
+                            contentPadding: EdgeInsets.symmetric(
+                              horizontal: 20,
+                              vertical: 20,
+                            ),
                           ),
                         ),
                       ),
@@ -122,19 +164,32 @@ class  BodyMainPage extends StatelessWidget {
                 child: Row(
                   children: [
                     Image.asset('assets/images/dress.jpg'),
-                    SizedBox(
-                      width: 100,
-                      child: TextField(
-                        style: TextStyle(color: Colors.black),
-                        decoration: InputDecoration(
-                          hintText: "Qty",
-                          hintStyle: TextStyle(
-                            fontSize: 12,
-                            color: Colors.white,
-                          ),
-                          contentPadding: EdgeInsets.symmetric(
-                            horizontal: 20,
-                            vertical: 20,
+                     Padding(
+                       padding: EdgeInsets.only(left:15),
+                       child: Text('Dress', 
+                              style: TextStyle(
+                                fontWeight:FontWeight.w600,
+                                color: Colors.white,
+                                fontSize: 15
+                              )
+                            ),
+                     ),
+                    Padding(
+                      padding: EdgeInsets.only(left: 130),
+                      child: SizedBox(
+                        width: 100,
+                        child: TextField(
+                          style: TextStyle(color: Colors.black),
+                          decoration: InputDecoration(
+                            hintText: "Qty",
+                            hintStyle: TextStyle(
+                              fontSize: 12,
+                              color: Colors.white,
+                            ),
+                            contentPadding: EdgeInsets.symmetric(
+                              horizontal: 20,
+                              vertical: 20,
+                            ),
                           ),
                         ),
                       ),
@@ -148,46 +203,59 @@ class  BodyMainPage extends StatelessWidget {
                 child: Row(
                   children: [
                     Image.asset('assets/images/windjacket.jpg'),
-                    SizedBox(                  
-                        width: 100,
-                        child: TextField(
-                          style: TextStyle(color: Colors.black),
-                          decoration: InputDecoration(                            
-                            hintText: "Qty",
-                            hintStyle: TextStyle(
-                              fontSize: 12,
-                              color: Colors.white,
+                     Padding(
+                       padding: EdgeInsets.only(left: 15),
+                       child: Text('Wind acket', 
+                              style: TextStyle(
+                                fontWeight:FontWeight.w600,
+                                color: Colors.white,
+                                fontSize: 15
+                              )
                             ),
-                            contentPadding: EdgeInsets.symmetric(
-                              horizontal: 20,
-                              vertical: 20,
+                     ),
+                    Padding(
+                      padding:  EdgeInsets.only(left:110),
+                      child: SizedBox(                  
+                          width: 100,
+                          child: TextField(
+                            style: TextStyle(color: Colors.black),
+                            decoration: InputDecoration(                            
+                              hintText: "Qty",
+                              hintStyle: TextStyle(
+                                fontSize: 12,
+                                color: Colors.white,
+                              ),
+                              contentPadding: EdgeInsets.symmetric(
+                                horizontal: 20,
+                                vertical: 20,
+                              ),
                             ),
                           ),
                         ),
-                      ),
+                    ),
                   ],
                 ),
               ),
-              // Padding(
-              //     padding: EdgeInsets.symmetric(horizontal: 40),
-              //     child: Container(
-              //       padding: EdgeInsets.only(top: 1, left: 3),
-              //       decoration: BoxDecoration(
-              //           border: Border(
-              //             bottom: BorderSide(color: Colors.blue[900]),
-              //             top: BorderSide(color: Colors.blue[900]),
-              //             right: BorderSide(color: Colors.blue[900]),
-              //             left: BorderSide(color: Colors.blue[900]),
-              //           )),                
-              //     ),
-              // ),
+              Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 40),
+                  child: Container(
+                    padding: EdgeInsets.only(top: 1, left: 3),
+                    decoration: BoxDecoration(
+                        border: Border(
+                          bottom: BorderSide(color: Colors.blue[900]),
+                          top: BorderSide(color: Colors.blue[900]),
+                          right: BorderSide(color: Colors.blue[900]),
+                          left: BorderSide(color: Colors.blue[900]),
+                        )),                
+                  ),
+              ),
               Padding(
                 padding: EdgeInsets.only(top:15),
                     //Order Button
                     child: MaterialButton(
                       minWidth: double.infinity,
                       height: 60,
-                      onPressed: () {},
+                      onPressed: () {Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => HistoryPage()));},
                       color: Colors.blue[900],
                       elevation: 0,
                       shape: RoundedRectangleBorder(

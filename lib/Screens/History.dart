@@ -12,18 +12,9 @@ class _HistoryPageState extends State<HistoryPage> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor:Colors.blueAccent[700] ,
-      appBar: AppBar( 
-        brightness: Brightness.light,
-        backgroundColor: Colors.blueAccent[700],
-        leading: IconButton(
-          onPressed: (){
-            Navigator.pop(context);
-          },
-          icon: Icon(Icons.arrow_back_ios, size:20, color:Colors.white,),
+      
+      
 
-        ),
-        title:Text("History"),
-      ),
     );
   }
 }
