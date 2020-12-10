@@ -2,12 +2,12 @@ class Clothes{
   String imageUrl; 
   String name; 
   int price; 
-
+  String dateTime;
   Clothes({
     this.imageUrl, 
     this.name,
     this.price,
-
+    this.dateTime
   });
 }
 

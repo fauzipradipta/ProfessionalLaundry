@@ -6,6 +6,16 @@ import 'package:pl/Screens/History.dart';
 
 class  BodyMainPage extends StatelessWidget {
 
+  // final clothes = Clothes(
+  //   // dateTime: DateFormat("dd/MM/yyyy - HH:mm:ss:S").format(DateTime.now())
+  // );
+  final buttonDownShirt = TextEditingController();
+  final blouse = TextEditingController();
+  final pants = TextEditingController();
+  final dress = TextEditingController();
+  final windJacket = TextEditingController();
+
+  
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -18,17 +28,7 @@ class  BodyMainPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
               Column(
-                children: <Widget>[
-                  Text(
-                    "Order",
-                    style: TextStyle(
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
+                children: <Widget>[                  
                   Text(
                     "Put your order below",
                     style: TextStyle(fontSize: 15, color: Colors.white),
@@ -47,7 +47,7 @@ class  BodyMainPage extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.only(top: 25),
                 child: Row(
-                  children: [
+                  children:<Widget> [
                     Image.asset('assets/images/buttonDownShirt.jpg'),                   
                     Padding(
                       padding:  EdgeInsets.only(left:10),
@@ -64,6 +64,7 @@ class  BodyMainPage extends StatelessWidget {
                       child: SizedBox(                      
                         width: 100,
                         child: TextField(
+                          controller: buttonDownShirt,
                           style: TextStyle(color: Colors.black),
                           decoration: InputDecoration(
                             hintText: "Qty",
@@ -103,6 +104,7 @@ class  BodyMainPage extends StatelessWidget {
                       child: SizedBox(
                         width: 100,
                         child: TextField(
+                          controller: blouse,
                           style: TextStyle(color: Colors.black),
                           decoration: InputDecoration(
                             hintText: "Qty",
@@ -141,6 +143,7 @@ class  BodyMainPage extends StatelessWidget {
                       child: SizedBox(
                         width: 100,
                         child: TextField(
+                          controller: pants,
                           style: TextStyle(color: Colors.black),
                           decoration: InputDecoration(
                             hintText: "Qty",
@@ -179,6 +182,7 @@ class  BodyMainPage extends StatelessWidget {
                       child: SizedBox(
                         width: 100,
                         child: TextField(
+                          controller: dress,
                           style: TextStyle(color: Colors.black),
                           decoration: InputDecoration(
                             hintText: "Qty",
@@ -205,7 +209,7 @@ class  BodyMainPage extends StatelessWidget {
                     Image.asset('assets/images/windjacket.jpg'),
                      Padding(
                        padding: EdgeInsets.only(left: 15),
-                       child: Text('Wind acket', 
+                       child: Text('Wind Jacket', 
                               style: TextStyle(
                                 fontWeight:FontWeight.w600,
                                 color: Colors.white,
@@ -218,6 +222,7 @@ class  BodyMainPage extends StatelessWidget {
                       child: SizedBox(                  
                           width: 100,
                           child: TextField(
+                            controller: windJacket,
                             style: TextStyle(color: Colors.black),
                             decoration: InputDecoration(                            
                               hintText: "Qty",
@@ -249,9 +254,10 @@ class  BodyMainPage extends StatelessWidget {
                         )),                
                   ),
               ),
+              
+              //Order Button
               Padding(
                 padding: EdgeInsets.only(top:15),
-                    //Order Button
                     child: MaterialButton(
                       minWidth: double.infinity,
                       height: 60,
@@ -301,4 +307,5 @@ class  BodyMainPage extends StatelessWidget {
       ],
     );
   }
+  
 }
