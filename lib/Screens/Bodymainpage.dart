@@ -4,7 +4,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:pl/Screens/History.dart';
 //import 'package:pl/models/Clothes_model.dart';
 
-class  BodyMainPage extends StatelessWidget {
+class BodyMainPage extends StatefulWidget{
+  _BodyMainPageState createState() => _BodyMainPageState();
+}
+class  _BodyMainPageState extends State<BodyMainPage> {
 
   // final clothes = Clothes(
   //   // dateTime: DateFormat("dd/MM/yyyy - HH:mm:ss:S").format(DateTime.now())
@@ -15,7 +18,7 @@ class  BodyMainPage extends StatelessWidget {
   final dress = TextEditingController();
   final windJacket = TextEditingController();
 
-  
+   
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -35,12 +38,7 @@ class  BodyMainPage extends StatelessWidget {
                   ),
                 ],
               ),
-              // makeInput(label: "First Name"),
-              // makeInput(label: "Last Name"),
-              // makeInput(label: "Address"),
-              // makeInput(label: "City"),
-              // makeInput(label: "Zip code"),
-              // makeInput(label: "Phone Number"),
+               
               SizedBox(
                 height: 5,
               ),
@@ -261,7 +259,14 @@ class  BodyMainPage extends StatelessWidget {
                     child: MaterialButton(
                       minWidth: double.infinity,
                       height: 60,
-                      onPressed: () {Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => HistoryPage()));},
+                      onPressed: () {
+                        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => HistoryPage(
+                         buttonDownShirtHolder :buttonDownShirt.text,
+                         blouseHolder: blouse.text,
+                         pantsHolder: pants.text,
+                         dressHolder: dress.text,
+                         windJacketHolder: windJacket.text,
+                        )));},
                       color: Colors.blue[900],
                       elevation: 0,
                       shape: RoundedRectangleBorder(
@@ -282,30 +287,6 @@ class  BodyMainPage extends StatelessWidget {
     );
   }
 
-  Widget makeInput({label, obscureText = false}) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Text(
-          label,
-          style: TextStyle(
-              fontSize: 15, fontWeight: FontWeight.w400, color: Colors.black87),
-        ),
-        SizedBox(
-          height: 5,
-        ),
-        TextField(
-          obscureText: obscureText,
-          decoration: InputDecoration(
-              contentPadding: EdgeInsets.symmetric(vertical: 0, horizontal: 10),
-              enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.grey[400])),
-              border: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.grey[400]))),
-        ),
-        //SizedBox(height: 30,),
-      ],
-    );
-  }
+  
   
 }

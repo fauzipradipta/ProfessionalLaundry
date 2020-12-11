@@ -7,7 +7,7 @@ import 'package:pl/Screens/Bodymainpage.dart';
 import 'package:pl/Screens/PricePage.dart';
 import 'package:pl/Screens/Help.dart';
 
-class Mainpage extends StatefulWidget {
+class Mainpage extends StatefulWidget { 
   @override
   _MainpageState createState() => _MainpageState();
 }
@@ -20,7 +20,7 @@ class _MainpageState extends State<Mainpage> {
     HistoryPage(),
     SettingPage(),
     PricePage(),
-    HelpPage()
+    HelpPage() 
   ];
 
   
@@ -33,7 +33,7 @@ class _MainpageState extends State<Mainpage> {
       //   title: Text('Professional Laundry'),
       // ),
       body: _widgetOptions.elementAt(_currentIndex),
-      
+       
       bottomNavigationBar: BottomNavigationBar(
 
         items: [

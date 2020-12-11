@@ -1,24 +1,74 @@
-import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:pl/Screens/Setting.dart';
 
-class HistoryPage extends StatefulWidget {
+ class HistoryPage extends StatelessWidget
+{
+  final buttonDownShirtHolder; 
+  final blouseHolder; 
+  final pantsHolder; 
+  final dressHolder; 
+  final windJacketHolder; 
 
-  // final String value; 
+  HistoryPage({
+    Key key, this.buttonDownShirtHolder,
+    this.blouseHolder, 
+    this.pantsHolder, 
+    this.dressHolder, 
+    this.windJacketHolder
+  }) : super(key: key);
 
-  // HistoryPage({Key key }) : super(key: key);
 
-  @override
-  _HistoryPageState createState() => _HistoryPageState();
-}
-
-class _HistoryPageState extends State<HistoryPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor:Colors.blueAccent[700] ,
-      
-      // body:
+      appBar: AppBar(
+        brightness: Brightness.light,
+        backgroundColor: Colors.blueAccent[700],
+        leading: IconButton(
+          onPressed: (){
+            Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => SettingPage()));            
+          },
+          icon: Icon(Icons.arrow_back_ios, size:20, color:Colors.white,),
+        ),
+      ),
+
+      body:Column(
+        mainAxisAlignment: MainAxisAlignment.center, 
+        children: <Widget>[
+          Container(child: 
+            Text('Button Down Shirt ' + buttonDownShirtHolder,
+            style: TextStyle(fontSize: 15), 
+            textAlign: TextAlign.center,)
+          ),
+          
+          Container(child: 
+            Text('Blouse ' + blouseHolder,
+            style: TextStyle(fontSize: 15), 
+            textAlign: TextAlign.center,)
+          ),
+
+          Container(child: 
+            Text('Pants ' + pantsHolder,
+            style: TextStyle(fontSize: 15), 
+            textAlign: TextAlign.center,)
+          ),
+
+          Container(child: 
+            Text('Dress ' + dressHolder,
+            style: TextStyle(fontSize: 15), 
+            textAlign: TextAlign.center,)
+          ),
+
+          Container(child: 
+            Text('Wind Jacket ' + windJacketHolder,
+            style: TextStyle(fontSize: 15), 
+            textAlign: TextAlign.center,)
+          ),
+        ]
+      )
 
     );
   }
