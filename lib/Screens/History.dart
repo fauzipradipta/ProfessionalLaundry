@@ -40,36 +40,36 @@ import 'package:pl/Screens/Setting.dart';
         children: <Widget>[
           Container(child: 
             Text('Button Down Shirt ' + buttonDownShirtHolder,
-            style: TextStyle(fontSize: 15), 
+            style: TextStyle(fontSize: 15, color:Colors.white), 
             textAlign: TextAlign.center,)
           ),
           
           Container(child: 
             Text('Blouse ' + blouseHolder,
-            style: TextStyle(fontSize: 15), 
-            textAlign: TextAlign.center,)
+            style: TextStyle(fontSize: 15, color:Colors.white), 
+            textAlign: TextAlign.center,
+            )
           ),
 
           Container(child: 
             Text('Pants ' + pantsHolder,
-            style: TextStyle(fontSize: 15), 
+            style: TextStyle(fontSize: 15, color:Colors.white), 
             textAlign: TextAlign.center,)
           ),
 
           Container(child: 
             Text('Dress ' + dressHolder,
-            style: TextStyle(fontSize: 15), 
+            style:TextStyle(fontSize: 15, color:Colors.white), 
             textAlign: TextAlign.center,)
           ),
 
           Container(child: 
             Text('Wind Jacket ' + windJacketHolder,
-            style: TextStyle(fontSize: 15), 
+            style: TextStyle(fontSize: 15, color:Colors.white), 
             textAlign: TextAlign.center,)
           ),
         ]
       )
-
     );
   }
 }

@@ -19,8 +19,6 @@ class _SettingPage extends State<SettingPage>{
     return  Scaffold(      
       resizeToAvoidBottomInset: false,
       backgroundColor:Colors.blueAccent[700],
-
-
         //My Profile Button
         body: Container(
           width:double.infinity,
