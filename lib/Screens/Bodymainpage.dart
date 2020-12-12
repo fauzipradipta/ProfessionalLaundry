@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:pl/Screens/History.dart';
-//import 'package:pl/models/Clothes_model.dart';
 
 class BodyMainPage extends StatefulWidget{
   _BodyMainPageState createState() => _BodyMainPageState();
@@ -258,15 +257,15 @@ class  _BodyMainPageState extends State<BodyMainPage> {
                 padding: EdgeInsets.only(top:15),
                     child: MaterialButton(
                       minWidth: double.infinity,
-                      height: 60,
-                      onPressed: () {
+                      height: 60,        
+                      onPressed: ()  {
                         Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => HistoryPage(
                          buttonDownShirtHolder :buttonDownShirt.text,
                          blouseHolder: blouse.text,
                          pantsHolder: pants.text,
                          dressHolder: dress.text,
                          windJacketHolder: windJacket.text,
-                        )));},
+                        )));} ,
                       color: Colors.blue[900],
                       elevation: 0,
                       shape: RoundedRectangleBorder(
@@ -279,6 +278,7 @@ class  _BodyMainPageState extends State<BodyMainPage> {
                             fontSize: 18),
                       ),
                     ),
+                
               )
             ],
           ),

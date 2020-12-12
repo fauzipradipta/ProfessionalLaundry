@@ -4,8 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:pl/Screens/Login.dart';
 import 'package:pl/Screens/MyProfile.dart';
 import 'package:pl/Screens/History.dart';
-//import 'package:pl/Screens/Bodymainpage.dart';
-//import 'package:pl/Screens/Mainpage.dart';
+import 'package:pl/Screens/PaymentMethod.dart';
 
 class SettingPage extends StatefulWidget{
   @override
@@ -51,7 +50,9 @@ class _SettingPage extends State<SettingPage>{
                         FlatButton(
                           minWidth: double.infinity,
                           height:60,
-                          onPressed: (){},
+                          onPressed: (){
+                             Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => PaymentMethod()));
+                          },
                           color:Colors.white,
                           shape:RoundedRectangleBorder(
                             borderRadius: (BorderRadius.circular(15)),

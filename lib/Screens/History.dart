@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:pl/Screens/Setting.dart';
+//import 'package:pl/Screens/Setting.dart';
+import 'package:pl/Screens/Mainpage.dart';
 
  class HistoryPage extends StatelessWidget
 {
@@ -29,7 +30,7 @@ import 'package:pl/Screens/Setting.dart';
         backgroundColor: Colors.blueAccent[700],
         leading: IconButton(
           onPressed: (){
-            Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => SettingPage()));            
+            Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) =>  Mainpage()));            
           },
           icon: Icon(Icons.arrow_back_ios, size:20, color:Colors.white,),
         ),
