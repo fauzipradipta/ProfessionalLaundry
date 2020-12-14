@@ -33,6 +33,9 @@ dependencies:
   #Firebase  
   firebase_core: ^0.5.2
   firebase_auth: ^0.18.3
+
+  #timeline_tile for tracking page
+  timeline_tile: ^1.0.0
   
   
 dev_dependencies:
