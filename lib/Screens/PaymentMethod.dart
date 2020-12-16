@@ -1,103 +1,139 @@
-import 'package:flutter/material.dart';
+library credit_card_field; 
+import 'package:flutter/material.dart'; 
 import 'package:flutter/cupertino.dart';
-import 'package:pl/Screens/Mainpage.dart';
 
-class PaymentMethod extends StatefulWidget {
-  @override
-  _PaymentMethodState createState() => _PaymentMethodState();
-}
+class CreditCardFormField extends StatelessWidget {
+  CreditCardFormField({
+    this.key,
+    this.controller,
+    this.decoration,
+    this.validator,
+    this.obscureText = false,
+    this.enabled = true,
+  }) : super(key: key);
 
-class _PaymentMethodState extends State<PaymentMethod> {
-  //Tracking all the changes to those text file
-  TextEditingController cardController = TextEditingController();
-  TextEditingController namecardController = TextEditingController();
-  TextEditingController dateYearController = TextEditingController();
-  TextEditingController zipCodeController = TextEditingController();
+  final Key key;
+  final TextEditingController controller;
+  final InputDecoration decoration;
+  final FormFieldValidator<String> validator;
+  final bool obscureText;
+  final bool enabled;
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-    backgroundColor: Colors.blueAccent[700],
-      appBar: AppBar(
-        brightness: Brightness.light,
-        backgroundColor: Colors.blueAccent[700],
-        leading: IconButton(
-          onPressed: () {
-            Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => Mainpage()));
-          },
-          icon: Icon(
-            Icons.arrow_back_ios,
-            size: 20,
-            color: Colors.white,
-          ),
-        ),
+    return TextFormField(
+      keyboardType: const TextInputType.numberWithOptions(
+        signed: false,
+        decimal: false,
       ),
-
-      body: Form(
-        child:Container(
-          padding: EdgeInsets.symmetric(horizontal:40),
-          height: MediaQuery.of(context).size.height,
-          width: double.infinity,
-          child:Column(
-            mainAxisAlignment:MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              Expanded(
-                child:Column(
-                  children:<Widget>[
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal:8.0),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children:<Widget>[
-                          TextFormField(
-                            keyboardType:TextInputType.number,
-                            controller: cardController,
-                            decoration:const InputDecoration(labelText:"Card Number")
-                          )
-                        ]
-                      ),
-                    ),
-
-                   Padding(
-                      padding: EdgeInsets.symmetric(horizontal:8.0),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children:<Widget>[
-                          TextFormField(
-                            keyboardType:TextInputType.name,
-                            controller: namecardController,
-                            decoration:const InputDecoration(labelText:"Name on Card")
-                          )
-                        ]
-                      ),
-                    ),
-
-                    Row(
-                      children: [
-                         Padding(
-                            padding: EdgeInsets.symmetric(horizontal:8.0),
-                            child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children:<Widget>[
-                              TextFormField(
-                              
-                              keyboardType:TextInputType.datetime,
-                              controller: dateYearController,
-                              decoration:const InputDecoration(labelText:"MM/YY")
-                            )
-                          ]
-                        ),
-                      )
-                      ],
-                    )
-                  ]
-                ),
-              )
-            ]
-          )
-          
-        )
-      ),
-
+      decoration: this.decoration,
+      controller: this.controller,
+      validator: this.validator,
+      obscureText: this.obscureText,
     );
   }
+}
+
+class CVVFormField extends StatelessWidget {
+  CVVFormField({
+    this.key,
+    this.controller,
+    this.decoration,
+    this.validator,
+    this.obscureText = false,
+    this.enabled = true,
+  }) : super(key: key);
+
+  final Key key;
+  final TextEditingController controller;
+  final InputDecoration decoration;
+  final FormFieldValidator<String> validator;
+  final bool obscureText;
+  final bool enabled;
+
+  @override
+  Widget build(BuildContext context) {
+    return TextFormField(
+      keyboardType: const TextInputType.numberWithOptions(
+        signed: false,
+        decimal: false,
+      ),
+      decoration: this.decoration,
+      controller: this.controller,
+      validator: this.validator,
+      obscureText: this.obscureText,
+    );
+  }
+}
+class PaymentPage extends StatefulWidget {
+    
+    PaymentPage({
+    this.key,
+    @required this.controller,
+    this.decoration,
+    this.obscureText = false,
+    this.enabled = true,
+  }) : super(key: key);
+
+  final Key key;
+  final TextEditingController controller;
+  final InputDecoration decoration;
+  final bool obscureText;
+  final bool enabled;
+  @override
+  _PaymentPageState createState() => _PaymentPageState();
+}
+
+class _PaymentPageState extends State<PaymentPage> {
+
+  @override
+  Widget build(BuildContext context) {
+     return TextFormField( 
+        keyboardType: const TextInputType.numberWithOptions(
+          signed: false, 
+          decimal: false,
+        ),
+        controller: widget.controller,
+        decoration: widget.decoration, 
+        onChanged:  (value){
+          setState((){
+             value = value.replaceAll(RegExp(r"\D"), "");
+          switch (value.length) {
+            case 0:
+              widget.controller.text = "MM/YY";
+              widget.controller.selection = TextSelection.collapsed(offset: 0);
+              break;
+            case 1:
+              widget.controller.text = "${value}M/YY";
+              widget.controller.selection = TextSelection.collapsed(offset: 1);
+              break;
+            case 2:
+              widget.controller.text = "$value/YY";
+              widget.controller.selection = TextSelection.collapsed(offset: 2);
+              break;
+            case 3:
+              widget.controller.text =
+                  "${value.substring(0, 2)}/${value.substring(2)}Y";
+              widget.controller.selection = TextSelection.collapsed(offset: 4);
+              break;
+            case 4:
+              widget.controller.text =
+                  "${value.substring(0, 2)}/${value.substring(2, 4)}";
+              widget.controller.selection = TextSelection.collapsed(offset: 5);
+              break;
+          }
+          if (value.length > 4) {
+            widget.controller.text =
+                "${value.substring(0, 2)}/${value.substring(2, 4)}";
+            widget.controller.selection = TextSelection.collapsed(offset: 5);
+          }
+          });
+        },
+        cursorWidth: 0.0,
+        obscureText: widget.obscureText,
+        enabled: widget.enabled,
+     );
+  }
+
+
 }

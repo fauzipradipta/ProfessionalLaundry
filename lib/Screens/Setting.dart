@@ -51,7 +51,7 @@ class _SettingPage extends State<SettingPage>{
                           minWidth: double.infinity,
                           height:60,
                           onPressed: (){
-                             Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => PaymentMethod()));
+                             Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => PaymentPage(controller:null )));
                           },
                           color:Colors.white,
                           shape:RoundedRectangleBorder(
