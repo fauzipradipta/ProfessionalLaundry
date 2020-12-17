@@ -1,4 +1,4 @@
-import 'package:pl/Payments/My_Strings.dart';
+import 'package:pl/Payments/my_strings.dart';
 import 'package:flutter/material.dart';
 
 
