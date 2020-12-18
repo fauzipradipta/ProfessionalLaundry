@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 //import 'package:pl/Screens/Setting.dart';
 import 'package:pl/Screens/Mainpage.dart';
 
- class HistoryPage extends StatelessWidget
+class HistoryPage extends StatelessWidget
 {
   final buttonDownShirtHolder; 
   final blouseHolder; 

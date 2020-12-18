@@ -71,7 +71,11 @@ class _SettingPage extends State<SettingPage>{
                           minWidth: double.infinity,
                           height:60,
                           onPressed: (){
-                               Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => HistoryPage()));
+                              Navigator.of(context).pushReplacement(
+                                MaterialPageRoute(
+                                  builder: (context) =>HistoryPage()
+                              )
+                            );
                           },
                           color:Colors.white,
                           shape:RoundedRectangleBorder(
