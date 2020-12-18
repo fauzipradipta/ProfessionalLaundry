@@ -1,3 +1,4 @@
+// import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter/cupertino.dart';
@@ -11,18 +12,44 @@ class  _BodyMainPageState extends State<BodyMainPage> {
   // final clothes = Clothes(
   //   // dateTime: DateFormat("dd/MM/yyyy - HH:mm:ss:S").format(DateTime.now())
   // );
-  final buttonDownShirt = TextEditingController();
-  final blouse = TextEditingController();
-  final pants = TextEditingController();
-  final dress = TextEditingController();
-  final windJacket = TextEditingController();
 
-   
+  bool isButtonEnabled;
+
+  TextEditingController _buttonDownShirtController;
+  TextEditingController _blouseController;
+  TextEditingController _pantsController;
+  TextEditingController _dressController;
+  TextEditingController _windJacketController;
+
+  @override
+  // ignore: must_call_super
+  void initState(){
+    _buttonDownShirtController = TextEditingController();
+    _blouseController = TextEditingController();
+    _pantsController = TextEditingController();
+    _dressController = TextEditingController();
+    _windJacketController = TextEditingController();
+
+    // if (( _buttonDownShirtController.text.trim() != "") && 
+    //     ( _blouseController.text.trim() != "") &&
+    //      (_pantsController.text.trim() != "")&&
+    //      ( _dressController.text.trim() != "") &&
+    //      (_windJacketController.text.trim() != "")
+    //      ) {
+    //     isButtonEnabled = false;
+    // } else {
+    //     isButtonEnabled = true;
+    // }
+
+  }
+
+  final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       clipBehavior: Clip.none,
-      child: SafeArea(
+      child: SafeArea(        
         top: false,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8.0),
@@ -40,7 +67,7 @@ class  _BodyMainPageState extends State<BodyMainPage> {
                
               SizedBox(
                 height: 5,
-              ),
+              ),          
               Padding(
                 padding: EdgeInsets.only(top: 25),
                 child: Row(
@@ -60,8 +87,8 @@ class  _BodyMainPageState extends State<BodyMainPage> {
                       padding: EdgeInsets.only(left:55),
                       child: SizedBox(                      
                         width: 100,
-                        child: TextField(
-                          controller: buttonDownShirt,
+                        child: TextFormField(
+                          controller:  _buttonDownShirtController,
                           style: TextStyle(color: Colors.black),
                           decoration: InputDecoration(
                             hintText: "Qty",
@@ -73,7 +100,14 @@ class  _BodyMainPageState extends State<BodyMainPage> {
                               horizontal: 20,
                               vertical: 20,
                             ),
+                            
                           ),
+                           validator: (value){
+                              if(value.isEmpty){
+                                return 'Please enter a number';
+                              }
+                              return null;
+                            }
                         ),
                       ),
                     )
@@ -100,8 +134,8 @@ class  _BodyMainPageState extends State<BodyMainPage> {
                       padding:  EdgeInsets.only(left: 130),
                       child: SizedBox(
                         width: 100,
-                        child: TextField(
-                          controller: blouse,
+                        child: TextFormField(
+                          controller: _blouseController,
                           style: TextStyle(color: Colors.black),
                           decoration: InputDecoration(
                             hintText: "Qty",
@@ -114,8 +148,14 @@ class  _BodyMainPageState extends State<BodyMainPage> {
                               vertical: 20,
                             ),
                           ),
+                           validator: (value){
+                              if(value.isEmpty){
+                                return 'Please enter a number';
+                              }
+                              return null;
+                            }
                         ),
-                      ),
+                      ), 
                     )
                   ],
                 ),
@@ -139,8 +179,8 @@ class  _BodyMainPageState extends State<BodyMainPage> {
                       padding:  EdgeInsets.only(left: 130),
                       child: SizedBox(
                         width: 100,
-                        child: TextField(
-                          controller: pants,
+                        child: TextFormField(
+                          controller:  _pantsController,
                           style: TextStyle(color: Colors.black),
                           decoration: InputDecoration(
                             hintText: "Qty",
@@ -153,6 +193,12 @@ class  _BodyMainPageState extends State<BodyMainPage> {
                               vertical: 20,
                             ),
                           ),
+                           validator: (value){
+                              if(value.isEmpty){
+                                return 'Please enter a number';
+                              }
+                              return null;
+                            }
                         ),
                       ),
                     )
@@ -178,8 +224,8 @@ class  _BodyMainPageState extends State<BodyMainPage> {
                       padding: EdgeInsets.only(left: 130),
                       child: SizedBox(
                         width: 100,
-                        child: TextField(
-                          controller: dress,
+                        child: TextFormField(
+                          controller:  _dressController,
                           style: TextStyle(color: Colors.black),
                           decoration: InputDecoration(
                             hintText: "Qty",
@@ -192,6 +238,12 @@ class  _BodyMainPageState extends State<BodyMainPage> {
                               vertical: 20,
                             ),
                           ),
+                           validator: (value){
+                              if(value.isEmpty){
+                                return 'Please enter a number';
+                              }
+                              return null;
+                            }
                         ),
                       ),
                     )
@@ -216,10 +268,10 @@ class  _BodyMainPageState extends State<BodyMainPage> {
                      ),
                     Padding(
                       padding:  EdgeInsets.only(left:110),
-                      child: SizedBox(                  
+                      child: SizedBox(                                          
                           width: 100,
-                          child: TextField(
-                            controller: windJacket,
+                          child: TextFormField(
+                            controller:  _windJacketController,
                             style: TextStyle(color: Colors.black),
                             decoration: InputDecoration(                            
                               hintText: "Qty",
@@ -232,6 +284,12 @@ class  _BodyMainPageState extends State<BodyMainPage> {
                                 vertical: 20,
                               ),
                             ),
+                            validator: (value){
+                              if(value.isEmpty){
+                                return 'Please enter a number';
+                              }
+                              return null;
+                            }
                           ),
                         ),
                     ),
@@ -260,12 +318,22 @@ class  _BodyMainPageState extends State<BodyMainPage> {
                       height: 60,        
                       onPressed: ()  {
                         Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => HistoryPage(
-                         buttonDownShirtHolder :buttonDownShirt.text,
-                         blouseHolder: blouse.text,
-                         pantsHolder: pants.text,
-                         dressHolder: dress.text,
-                         windJacketHolder: windJacket.text,
-                        )));} ,
+                         buttonDownShirtHolder : _buttonDownShirtController.text,
+                         blouseHolder: _blouseController.text,
+                         pantsHolder:  _pantsController.text,
+                         dressHolder:  _dressController.text,
+                         windJacketHolder:  _windJacketController.text,
+                        )));
+
+                        // Validate returns true if the form is valid, or false
+                        // otherwise.
+                        if (_formKey.currentState.validate()) {
+                              // If the form is valid, display a Snackbar.
+                          Scaffold.of(context)
+                         .showSnackBar(SnackBar(content: Text('Processing Data')));
+                         }
+                      
+                      },
                       color: Colors.blue[900],
                       elevation: 0,
                       shape: RoundedRectangleBorder(
@@ -281,9 +349,9 @@ class  _BodyMainPageState extends State<BodyMainPage> {
                 
               )
             ],
-          ),
+          ),      
         ),
-      ),
+      ),    
     );
   }
 
