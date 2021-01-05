@@ -1,10 +1,15 @@
-// import 'package:firebase_database/firebase_database.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:pl/Screens/History.dart';
 
 class BodyMainPage extends StatefulWidget{
+
+  // BodyMainPage({this.data});
+  // // final FirebaseApp data;
+
+  @override
   _BodyMainPageState createState() => _BodyMainPageState();
 }
 class  _BodyMainPageState extends State<BodyMainPage> {
@@ -13,13 +18,16 @@ class  _BodyMainPageState extends State<BodyMainPage> {
   //   // dateTime: DateFormat("dd/MM/yyyy - HH:mm:ss:S").format(DateTime.now())
   // );
 
-  bool isButtonEnabled;
+  
 
   TextEditingController _buttonDownShirtController;
   TextEditingController _blouseController;
   TextEditingController _pantsController;
   TextEditingController _dressController;
   TextEditingController _windJacketController;
+
+  DatabaseReference _ref; 
+  final referenceData = FirebaseDatabase.instance;
 
   @override
   // ignore: must_call_super
@@ -30,20 +38,11 @@ class  _BodyMainPageState extends State<BodyMainPage> {
     _dressController = TextEditingController();
     _windJacketController = TextEditingController();
 
-    // if (( _buttonDownShirtController.text.trim() != "") && 
-    //     ( _blouseController.text.trim() != "") &&
-    //      (_pantsController.text.trim() != "")&&
-    //      ( _dressController.text.trim() != "") &&
-    //      (_windJacketController.text.trim() != "")
-    //      ) {
-    //     isButtonEnabled = false;
-    // } else {
-    //     isButtonEnabled = true;
-    // }
+    _ref = FirebaseDatabase.instance.reference().child('Order');
 
   }
 
-  final _formKey = GlobalKey<FormState>();
+  //final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -325,14 +324,13 @@ class  _BodyMainPageState extends State<BodyMainPage> {
                          windJacketHolder:  _windJacketController.text,
                         )));
 
-                        // Validate returns true if the form is valid, or false
+                      // Validate returns true if the form is valid, or false
                         // otherwise.
-                        if (_formKey.currentState.validate()) {
-                              // If the form is valid, display a Snackbar.
-                          Scaffold.of(context)
-                         .showSnackBar(SnackBar(content: Text('Processing Data')));
-                         }
-                      
+                        // if (_formKey.currentState.validate()) {
+                        //       // If the form is valid, display a Snackbar.
+                        //   Scaffold.of(context)
+                        //  .showSnackBar(SnackBar(content: Text('Processing Data')));
+                        //  }
                       },
                       color: Colors.blue[900],
                       elevation: 0,
@@ -355,6 +353,24 @@ class  _BodyMainPageState extends State<BodyMainPage> {
     );
   }
 
-  
+   void saveOrder(){
+      String buttondownshirt =  _buttonDownShirtController.text;
+      String blouse =  _blouseController.text;
+      String pants  =  _pantsController.text;
+      String dress =  _dressController.text;
+      String windjacket = _windJacketController.text;
+
+    Map<String, String> order = {
+      'Button Down Shirt': buttondownshirt, 
+      'Blouse' : blouse, 
+      'Pants'     : pants, 
+      'Dress'  : dress, 
+      'Wind Jacket'   : windjacket,
+      
+    };
+    _ref.push().set(order).then((value) {
+        Navigator.pop(context);
+    });
+  }
   
 }
