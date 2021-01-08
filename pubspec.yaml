@@ -31,13 +31,20 @@ dependencies:
   http: 0.12.1
 
   #Firebase  
-  firebase_core: ^0.5.3
+  #firebase_core: ^0.5.3
   firebase_auth: ^0.18.3
   firebase_database: ^4.4.0
 
   #timeline_tile for tracking page
   timeline_tile: ^1.0.0
+
+  #credit Card Validator
   credit_card_number_validator: ^1.0.4
+ 
+  google_fonts: ^1.1.1
+  
+  #sticky Header
+  sticky_headers: ^0.1.8
   
 dev_dependencies:
   flutter_test:
@@ -65,7 +72,7 @@ flutter:
     - assets/Liability_Page.jpg
     - assets/Liability_PageSignUp.jpg
     - assets\price2.jpg
-
+    - assets/order_placed.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 
