@@ -40,7 +40,7 @@ class _TrackingPageState extends State<TrackingPage> {
   @override
   Widget build(BuildContext context) {
     //Date and Time
-    DateTime now = new DateTime.now();
+    // DateTime now = new DateTime.now();
 
     return Scaffold(
       backgroundColor: Colors.white,

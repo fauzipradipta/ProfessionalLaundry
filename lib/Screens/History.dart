@@ -37,9 +37,9 @@ class HistoryPage extends StatelessWidget
       ),
 
       body:Column(
-        mainAxisAlignment: MainAxisAlignment.center, 
+        mainAxisAlignment: MainAxisAlignment.start, 
         children: <Widget>[
-          Container(child: 
+          Container(child:           
             Text('Button Down Shirt ' + buttonDownShirtHolder,
             style: TextStyle(fontSize: 15, color:Colors.white), 
             textAlign: TextAlign.center,)
