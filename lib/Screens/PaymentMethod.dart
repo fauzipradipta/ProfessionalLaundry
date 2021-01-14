@@ -16,6 +16,7 @@ class _PaymentPageState extends State<PaymentPage> {
   //Card Number Controller 
   TextEditingController _cardNumberController = TextEditingController();
   TextEditingController _nameCardController = TextEditingController();
+   
   //Declare variables To store Card Type and Validity
   String cardType; 
   String nameType;

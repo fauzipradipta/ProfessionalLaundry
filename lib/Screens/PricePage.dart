@@ -55,7 +55,7 @@ class _PricePageState extends State<PricePage> {
 
                   Padding(
                     padding:EdgeInsets.only(left:100), 
-                    child: Text('   3', 
+                    child: Text('    3', 
                                   style: TextStyle(
                                     fontWeight:FontWeight.w600,
                                     color: Colors.black,

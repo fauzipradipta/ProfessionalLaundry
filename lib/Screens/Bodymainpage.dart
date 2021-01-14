@@ -18,8 +18,6 @@ class  _BodyMainPageState extends State<BodyMainPage> {
   //   // dateTime: DateFormat("dd/MM/yyyy - HH:mm:ss:S").format(DateTime.now())
   // );
 
-  
-
   TextEditingController _buttonDownShirtController;
   TextEditingController _blouseController;
   TextEditingController _pantsController;
@@ -343,8 +341,7 @@ class  _BodyMainPageState extends State<BodyMainPage> {
                             color: Colors.white,
                             fontSize: 18),
                       ),
-                    ),
-                
+                    ),                
               )
             ],
           ),      

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+// import 'package:pl/Screens/Mainpage.dart';
 
 class LiabilityPage extends StatelessWidget{
   @override 
@@ -23,7 +24,10 @@ class LiabilityPage extends StatelessWidget{
             fit:BoxFit.cover,
           ), 
         ),
+        
+
       ),
+     
     );
   }
 
