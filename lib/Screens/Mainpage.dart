@@ -45,7 +45,7 @@ class _MainpageState extends State<Mainpage> {
               backgroundColor: Colors.black),
 
           BottomNavigationBarItem(
-              icon: Icon(Icons.add_shopping_cart),
+              icon: Icon(Icons.history),
               // ignore: deprecated_member_use
               title: Text("Tracking"),
               backgroundColor: Colors.black),

@@ -37,8 +37,8 @@ dependencies:
   firebase_storage: ^7.0.0
   
   #apple and google sign in 
-  # google_sign_in: ^4.5.9
-  # apple_sign_in: ^0.1.0
+  google_sign_in: ^4.5.9
+  apple_sign_in: ^0.1.0
 
   #image Picker 
   image_picker: ^0.6.7+21
