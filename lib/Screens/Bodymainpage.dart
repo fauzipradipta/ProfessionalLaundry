@@ -2,7 +2,7 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:pl/Screens/History.dart';
+import 'package:pl2/Screens/History.dart';
 
 class BodyMainPage extends StatefulWidget{
 

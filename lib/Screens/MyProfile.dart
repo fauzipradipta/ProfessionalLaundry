@@ -3,9 +3,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
-import 'package:pl/Screens/Mainpage.dart';
+import 'package:pl2/Screens/Mainpage.dart';
 import 'package:firebase_database/firebase_database.dart';
-import 'package:pl/models/User_model.dart';
+import 'package:pl2/models/User_model.dart';
 
 
 class MyProfilePage extends StatefulWidget {
@@ -58,7 +58,7 @@ class _MyProfilePageState extends State<MyProfilePage> {
        ),
        body: 
        Container(
-          child: dataList.length == 1 ? 
+          child: dataList.length == 0 ? 
           Center(
            child: Text(
              'data',

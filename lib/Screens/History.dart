@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-//import 'package:pl/Screens/Setting.dart';
-import 'package:pl/Screens/Mainpage.dart';
+//import 'package:pl2/Screens/Setting.dart';
+import 'package:pl2/Screens/Mainpage.dart';
 
 class HistoryPage extends StatelessWidget
 {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:pl/Screens/Mainpage.dart';
+import 'package:pl2/Screens/Mainpage.dart';
 
 
 class PricePage extends StatefulWidget {

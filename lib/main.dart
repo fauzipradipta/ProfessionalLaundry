@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
-import 'package:pl/Screens/Login.dart';
-// import 'package:pl/Screens/PricePage.dart';
-import 'package:pl/Screens/Signup.dart';
+import 'package:pl2/Screens/Signin.dart';
+// import 'package:pl2/Screens/PricePage.dart';
+import 'package:pl2/Screens/Signup.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 void main() async {
+  // WidgetsFlutterBinding.ensureInitialized();
+  // await Firebase.initializeApp();
   runApp(
     MaterialApp(
       debugShowCheckedModeBanner:false, 
@@ -72,7 +74,7 @@ class _HomePageState extends State<HomePage> {
                     height: 60, 
                     onPressed:() {
                      //future: Firebase.initializeApp();
-                     Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => LoginPage()));
+                     Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => SigninPage()));
                     }, 
                     color:Colors.blue[900],
                     shape: RoundedRectangleBorder(
