@@ -4,7 +4,7 @@ class UserModel{
   String email;
   String address;
   String address2;
-  String avatarUrl;
+  // String avatarUrl;
 
   UserModel(
     this.firstname, 
@@ -12,6 +12,6 @@ class UserModel{
     this.email,
     this.address, 
     this.address2,
-      this.avatarUrl,
+      // this.avatarUrl,
   );
 }

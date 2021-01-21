@@ -73,17 +73,31 @@ class _HistoryPageState extends State<HistoryPage> {
           ),
         ),
 
-        body:dataList.length == 0 ? Center(child: Text("No Order",
-                      style: TextStyle(fontSize: 30),)): ListView.builder(
-                  itemBuilder: (_, index){
-                    return CardUI(
-                    dataList[index].buttonDownShirtHolder,
-                    dataList[index].blouseHolder,
-                    dataList[index].pantsHolder,
-                    dataList[index].dressHolder,
-                    dataList[index].windJacketHolder,);
-          },
-        ),
+        body:
+        ListView.builder(
+          itemCount: dataList.length.compareTo(0),
+          itemBuilder: (_, index){
+                      return CardUI(
+                      dataList[index].buttonDownShirtHolder,
+                      dataList[index].blouseHolder,
+                      dataList[index].pantsHolder,
+                      dataList[index].dressHolder,
+                      dataList[index].windJacketHolder,);
+            },
+        )
+
+
+        // dataList.length == 0 ? Center(child: Text("No Order",
+        //               style: TextStyle(fontSize: 30),)): ListView.builder(
+        //           itemBuilder: (_, index){
+        //             return CardUI(
+        //             dataList[index].buttonDownShirtHolder,
+        //             dataList[index].blouseHolder,
+        //             dataList[index].pantsHolder,
+        //             dataList[index].dressHolder,
+        //             dataList[index].windJacketHolder,);
+        //   },
+        // ),
 
 
 
