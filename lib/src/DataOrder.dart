@@ -1,15 +1,15 @@
-class DataOrder{
-  String buttonDownShirt;
-  String blouse;
-  String pants;
-  String dress;
-  String windJacket;
+class Order{
+  String buttonDownShirtHolder;
+  String blouseHolder;
+  String pantsHolder;
+  String dressHolder;
+  String windJacketHolder;
 
-  DataOrder(
-    this.buttonDownShirt, 
-    this.blouse,
-    this.pants,
-    this.dress, 
-    this.windJacket
+  Order(
+    this.buttonDownShirtHolder,
+    this.blouseHolder,
+    this.pantsHolder,
+    this.dressHolder,
+    this.windJacketHolder
   );
 }

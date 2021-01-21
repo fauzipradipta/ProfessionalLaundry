@@ -2,7 +2,6 @@ class UserModel{
   String firstname; 
   String lastname;
   String email;
-  String pass;
   String address;
   String address2;
   String avatarUrl;
@@ -10,9 +9,9 @@ class UserModel{
   UserModel(
     this.firstname, 
     this.lastname, 
-    this.email, 
-    this.pass, 
+    this.email,
     this.address, 
-    this.address2
+    this.address2,
+      this.avatarUrl,
   );
 }

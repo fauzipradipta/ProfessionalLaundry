@@ -46,12 +46,11 @@ class  _BodyMainPageState extends State<BodyMainPage> {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       clipBehavior: Clip.none,
-      child: SafeArea(        
-        top: false,
+      child: SafeArea(                
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8.0),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
               Column(
                 children: <Widget>[                  
@@ -86,7 +85,7 @@ class  _BodyMainPageState extends State<BodyMainPage> {
                         width: 100,
                         child: TextFormField(
                           controller:  _buttonDownShirtController,
-                          style: TextStyle(color: Colors.black),
+                          style: TextStyle(color: Colors.white),
                           decoration: InputDecoration(
                             hintText: "Qty",
                             hintStyle: TextStyle(
@@ -133,7 +132,7 @@ class  _BodyMainPageState extends State<BodyMainPage> {
                         width: 100,
                         child: TextFormField(
                           controller: _blouseController,
-                          style: TextStyle(color: Colors.black),
+                          style: TextStyle(color: Colors.white),
                           decoration: InputDecoration(
                             hintText: "Qty",
                             hintStyle: TextStyle(
@@ -178,7 +177,7 @@ class  _BodyMainPageState extends State<BodyMainPage> {
                         width: 100,
                         child: TextFormField(
                           controller:  _pantsController,
-                          style: TextStyle(color: Colors.black),
+                          style: TextStyle(color: Colors.white),
                           decoration: InputDecoration(
                             hintText: "Qty",
                             hintStyle: TextStyle(
@@ -223,7 +222,7 @@ class  _BodyMainPageState extends State<BodyMainPage> {
                         width: 100,
                         child: TextFormField(
                           controller:  _dressController,
-                          style: TextStyle(color: Colors.black),
+                          style: TextStyle(color: Colors.white),
                           decoration: InputDecoration(
                             hintText: "Qty",
                             hintStyle: TextStyle(
@@ -269,7 +268,7 @@ class  _BodyMainPageState extends State<BodyMainPage> {
                           width: 100,
                           child: TextFormField(
                             controller:  _windJacketController,
-                            style: TextStyle(color: Colors.black),
+                            style: TextStyle(color: Colors.white),
                             decoration: InputDecoration(                            
                               hintText: "Qty",
                               hintStyle: TextStyle(
@@ -311,16 +310,11 @@ class  _BodyMainPageState extends State<BodyMainPage> {
               Padding(
                 padding: EdgeInsets.only(top:15),
                     child: MaterialButton(
-                      minWidth: double.infinity,
+                      minWidth: 170,
                       height: 60,        
                       onPressed: ()  {
-                        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => HistoryPage(
-                         buttonDownShirtHolder : _buttonDownShirtController.text,
-                         blouseHolder: _blouseController.text,
-                         pantsHolder:  _pantsController.text,
-                         dressHolder:  _dressController.text,
-                         windJacketHolder:  _windJacketController.text,
-                        )));
+                        saveOrder();
+                        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => HistoryPage()));
 
                       // Validate returns true if the form is valid, or false
                         // otherwise.

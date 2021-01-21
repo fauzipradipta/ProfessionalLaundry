@@ -33,8 +33,9 @@ dependencies:
 
   firebase_auth: ^0.20.0+1
   firebase_database: ^6.0.0
-#  firebase_storage: ^7.0.0
-  firebase_core: ^0.7.0
+  # firebase_storage: ^7.0.0
+  # firebase_core: ^0.7.0
+  #cloud_firestore: ^0.16.0
 
   #image Picker 
   image_picker: ^0.6.7+21
