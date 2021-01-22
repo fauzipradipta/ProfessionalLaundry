@@ -1,16 +1,16 @@
-class UserModel{
-  String firstname; 
-  String lastname;
+class Profile{
+  String firstName;
+  String lastName;
   String email;
   String address;
   String address2;
   // String avatarUrl;
 
-  UserModel(
-    this.firstname, 
-    this.lastname, 
+ Profile(
+    this.firstName,
+    this.lastName,
     this.email,
-    this.address, 
+    this.address,
     this.address2,
       // this.avatarUrl,
   );

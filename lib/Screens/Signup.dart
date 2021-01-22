@@ -1,13 +1,18 @@
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:pl2/Screens/LiabilityPage.dart';
+//import 'package:pl2/Screens/LiabilityPage.dart';
+import 'package:pl2/Screens/Mainpage.dart';
 import 'package:pl2/main.dart'; 
-import 'package:firebase_auth/firebase_auth.dart'; 
+import 'package:firebase_auth/firebase_auth.dart';
+// import 'package:firebase_core/firebase_core.dart';
+// import 'package:cloud_firestore/cloud_firestore.dart';
 
 class SignupPage extends StatefulWidget {
 
   final String title = "Registration";
 
+  final referenceData = FirebaseDatabase.instance;
   @override
   _SignupPageState createState() => _SignupPageState();
 }
@@ -18,7 +23,12 @@ class _SignupPageState extends State<SignupPage> {
   //Tracking all changes to the file
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
-  //TextEditingController _repasswordController = TextEditingController();
+  TextEditingController _firstNameController = TextEditingController();
+  TextEditingController _lastNameController = TextEditingController();
+  TextEditingController _addressController = TextEditingController();
+  TextEditingController _address2Controller = TextEditingController();
+
+ DatabaseReference _ref = FirebaseDatabase.instance.reference().child('Profile');
 
   final auth = FirebaseAuth.instance;
   @override
@@ -73,13 +83,46 @@ class _SignupPageState extends State<SignupPage> {
                           ),
                         ],
                       ),
+
+                      //First Name
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: 8.0),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: <Widget>[
                             TextFormField(
-                              keyboardType: TextInputType.emailAddress,
+                              // keyboardType: TextInputType.name,
+                              controller: _firstNameController,
+                              decoration:
+                              const InputDecoration(labelText: "First Name"),
+                            ),
+                          ],
+                        ),
+                      ),
+
+                      //Last Name
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 8.0),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: <Widget>[
+                            TextFormField(
+                              // keyboardType: TextInputType.name,
+                              controller: _lastNameController,
+                              decoration:
+                              const InputDecoration(labelText: "Last Name"),
+                            ),
+                          ],
+                        ),
+                      ),
+                      //Email
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 8.0),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: <Widget>[
+                            TextFormField(
+                              // keyboardType: TextInputType.emailAddress,
                               controller: _emailController,
                               decoration:
                               const InputDecoration(labelText: "Email"),
@@ -94,6 +137,7 @@ class _SignupPageState extends State<SignupPage> {
                         ),
                       ),
 
+                      //Password
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Column(
@@ -114,12 +158,53 @@ class _SignupPageState extends State<SignupPage> {
                           ],
                         ),
                       ),
+
+                      //Address
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 8.0),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: <Widget>[
+                            TextFormField(
+                              // keyboardType: TextInputType.streetAddress,
+                              controller: _addressController,
+                              decoration:
+                              const InputDecoration(labelText: "Address 1"),
+                            ),
+                          ],
+                        ),
+                      ),
+
+                      //Address 2
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 8.0),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: <Widget>[
+                            TextFormField(
+                              // keyboardType: TextInputType.streetAddress,
+                              controller: _address2Controller,
+                              decoration:
+                              const InputDecoration(labelText: "Address 2"),
+                            ),
+                          ],
+                        ),
+                      ),
                      
                       Container(
                         child: RaisedButton(
                           padding: const EdgeInsets.symmetric(vertical: 16.0),
+
                           // alignment: Alignment.center,
                           onPressed: () async {
+                            // Map<String,dynamic> data = {
+                            //   "First Name": _firstNameController.text,
+                            //   "Last Name ": _lastNameController.text,
+                            //   "Email ": _emailController.text,
+                            //   "Address1 ": _addressController.text,
+                            //   "Address2" : _address2Controller.text,
+                            // };
+                            saveProfile();
                             await auth
                                 .createUserWithEmailAndPassword(
                                 email: _emailController.text,
@@ -127,7 +212,7 @@ class _SignupPageState extends State<SignupPage> {
                                 .then((_) async {
                               Navigator.of(context).pushReplacement(
                                   MaterialPageRoute(
-                                      builder: (context) => LiabilityPage()));
+                                      builder: (context) => Mainpage()));
                             });
                           },
                           child: const Text('Sign Up'),
@@ -159,5 +244,25 @@ class _SignupPageState extends State<SignupPage> {
         ),
       )
     );
+  }
+
+  void saveProfile(){
+    String firstName = _firstNameController.text;
+    String lastName = _lastNameController.text;
+    String email = _emailController.text;
+    String address = _addressController.text;
+    String address2 = _address2Controller.text;
+
+    Map<String, String> profile ={
+      'First Name ': firstName,
+      'Last Name ': lastName,
+      'Email' : email,
+      'Address ': address,
+      'Address 2': address2,
+    };
+    _ref.push().set(profile).then((value){
+      Navigator.pop(context);
+    });
+
   }
 }
