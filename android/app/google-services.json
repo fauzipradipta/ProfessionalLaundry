@@ -1,34 +1,33 @@
 {
   "project_info": {
-    "project_number": "551533014263",
-    "firebase_url": "https://professional-laund.firebaseio.com",
-    "project_id": "professional-laund",
-    "storage_bucket": "professional-laund.appspot.com"
+    "project_number": "310426642617",
+    "project_id": "professionallaundry-a7b87",
+    "storage_bucket": "professionallaundry-a7b87.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:551533014263:android:b5aeafa128d1da9c9477f2",
+        "mobilesdk_app_id": "1:310426642617:android:576bcdeaffb1913f2bd368",
         "android_client_info": {
-          "package_name": "com.example.pl"
+          "package_name": "com.example.pl2"
         }
       },
       "oauth_client": [
         {
-          "client_id": "551533014263-e6cc26h3bp54b3vjma4mn4uk1e7ru9cu.apps.googleusercontent.com",
+          "client_id": "310426642617-k3o822jrb6jt56013ev0raraet5krph4.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyASmQb4JjfQ9U8dovP-TGUcaDasci8B_n8"
+          "current_key": "AIzaSyB0mikY_z6UFuYgXt3EMUfjlut4nXMqq2A"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "551533014263-e6cc26h3bp54b3vjma4mn4uk1e7ru9cu.apps.googleusercontent.com",
+              "client_id": "310426642617-k3o822jrb6jt56013ev0raraet5krph4.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

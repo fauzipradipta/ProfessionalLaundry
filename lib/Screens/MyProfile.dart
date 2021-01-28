@@ -1,11 +1,9 @@
-//import 'package:firebase_core/firebase_core.dart';
-//import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
-import 'package:pl/Screens/Mainpage.dart';
+import 'package:pl2/Models/userData.dart';
+import 'package:pl2/Screens/Mainpage.dart';
 import 'package:firebase_database/firebase_database.dart';
-//import 'package:pl/src/Data.dart';
 
 class MyProfilePage extends StatefulWidget {
   // MyProfilePage({this.data});
@@ -16,29 +14,37 @@ class MyProfilePage extends StatefulWidget {
 }
 
 class _MyProfilePageState extends State<MyProfilePage> {
-  
-  //Tracking changes to all Text Variable
-  TextEditingController _firstnameController;
-  TextEditingController _lastnameController;
-  TextEditingController _emailController;
-  TextEditingController _passwordController;
-  TextEditingController _addressController;
-  TextEditingController _address2Controller;
+  List<Profile> profileList =[];
 
-  DatabaseReference _ref ;
-  final referenceData = FirebaseDatabase.instance;
 
   @override
   // ignore: must_call_super
   void initState() {
-   _firstnameController = TextEditingController();
-   _lastnameController = TextEditingController();
-   _emailController = TextEditingController();
-   _passwordController = TextEditingController();
-   _addressController = TextEditingController();
-   _address2Controller = TextEditingController();
 
-   _ref = FirebaseDatabase.instance.reference().child('Profile');
+    DatabaseReference _ref = FirebaseDatabase.instance.reference();
+   // _ref = FirebaseDatabase.instance.reference().child('Profile');
+   _ref.child('Profile').once().then((DataSnapshot dataSnapshot){
+     profileList.clear();
+
+     var keys = dataSnapshot.value.keys;
+     var values = dataSnapshot.value;
+
+     for(var key in keys){
+        Profile profile = new Profile(
+          values[key]['firstName'],
+          values[key]['lastName'],
+          values[key]['email'],
+          values[key]['address'],
+          values[key]['address2'],
+        );
+        print(keys);
+        print("ss");
+        profileList.add(profile);
+     }
+      setState((){
+        print('Length : ${profileList.length}');
+      });
+   });
    
   }
 
@@ -62,246 +68,128 @@ class _MyProfilePageState extends State<MyProfilePage> {
           ),
         ),
        ),
-      body: SingleChildScrollView(
-        child: Container(
-          child:Column(
-            mainAxisAlignment:MainAxisAlignment.center,
-            children: [
-              //First name
-              Text('First Name',
-                style: TextStyle(
-                fontSize:14.0, 
-                fontWeight: FontWeight.w800)
-              ),
+      body: Container(
+          color:Colors.white,
+          margin: EdgeInsets.all(1.5),
+          padding: EdgeInsets.all(10),
+          child: Column(
+            children: <Widget>[
               Padding(
-                padding: EdgeInsets.all(16.0),
-                child: TextFormField(
-                  keyboardType: TextInputType.name,
-                  controller: _firstnameController,
-                  decoration: InputDecoration(
-                    labelText: 'First Name',
-                    hintText: 'First Name',
-                    hintStyle:TextStyle(color:Color(0xFFCCCCC)),
-                    contentPadding: new EdgeInsets.symmetric(
-                      vertical:14.0, 
-                      horizontal:7.0,
-                  ),
-                  focusedBorder: const OutlineInputBorder(
-                      borderSide: const BorderSide(
-                        color: Colors.grey,
-                        width: 0.0),
-                    ),
-                    enabledBorder: const OutlineInputBorder(
-                      borderSide: const BorderSide(color: Colors.grey, 
-                      width:0.0),
-                    ),
-                  ),
+                padding:EdgeInsets.symmetric(horizontal: 8.0),
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: <Widget>[
+                      Text("firstName : Syawadhilah",
+                        style: TextStyle(color: Colors.black,
+                          fontSize: 15,
+                        ),
+                      ),
+                      ]
+                )
+              ),
+
+              Padding(
+                  padding:EdgeInsets.symmetric(horizontal: 8.0),
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: <Widget>[
+                        Text("Last Name : Pradipta",
+                          style: TextStyle(color: Colors.black,
+                            fontSize: 15,
+                          ),
+                        ),
+                      ]
+                  )
+              ),
+
+              Text("Email : dipta0988@gmail.com",
+                style: TextStyle(color: Colors.black,
+                  fontSize: 15,
                 ),
               ),
 
-              //Last name 
-               Text('Last Name',
-                style: TextStyle(
-                fontSize:14.0, 
-                fontWeight: FontWeight.w800)
-              ),
-              Padding(
-                padding: EdgeInsets.all(16.0),
-                child: TextFormField(
-                  keyboardType: TextInputType.name,
-                  controller: _lastnameController,
-                  decoration: InputDecoration(
-                    labelText: 'Last name',
-                    hintText: 'Last Name',
-                    hintStyle:TextStyle(color:Color(0xFFCCCCC)),
-                    contentPadding: new EdgeInsets.symmetric(
-                      vertical:14.0, 
-                      horizontal:7.0,
-                  ),
-                  focusedBorder: const OutlineInputBorder(
-                      borderSide: const BorderSide(
-                        color: Colors.grey,
-                        width: 0.0),
-                    ),
-                    enabledBorder: const OutlineInputBorder(
-                      borderSide: const BorderSide(color: Colors.grey, 
-                      width:0.0),
-                    ),
-                  ),
+              Text("Address : 3000 University Boulevard",
+                style: TextStyle(color: Colors.black,
+                  fontSize: 15,
                 ),
               ),
 
-              //Email
-               Text('Email',
-                style: TextStyle(
-                fontSize:14.0, 
-                fontWeight: FontWeight.w800)
-              ),
-              Padding(
-                padding: EdgeInsets.all(16.0),
-                child: TextFormField(
-                  keyboardType: TextInputType.emailAddress,
-                  controller: _emailController,
-                  decoration: InputDecoration(
-                    labelText: 'Email Address',
-                    hintText: 'Email Address',
-                    hintStyle:TextStyle(color:Color(0xFFCCCCC)),
-                    contentPadding: new EdgeInsets.symmetric(
-                      vertical:14.0, 
-                      horizontal:7.0,
-                  ),
-                  focusedBorder: const OutlineInputBorder(
-                      borderSide: const BorderSide(
-                        color: Colors.grey,
-                        width: 0.0),
-                    ),
-                    enabledBorder: const OutlineInputBorder(
-                      borderSide: const BorderSide(color: Colors.grey, 
-                      width:0.0),
-                    ),
-                  ),
-                ),
-              ),
-              
-              //Password
-               Text('Password',
-                style: TextStyle(
-                fontSize:14.0, 
-                fontWeight: FontWeight.w800)
-              ),
-              Padding(
-                padding: EdgeInsets.all(16.0),
-                child: TextFormField(
-                  keyboardType: TextInputType.visiblePassword,
-                  controller: _passwordController,
-                  obscureText: true,
-                  decoration: InputDecoration(
-                    labelText: 'Password',
-                    hintText: 'Password',
-                    hintStyle:TextStyle(color:Color(0xFFCCCCC)),
-                    contentPadding: new EdgeInsets.symmetric(
-                      vertical:14.0, 
-                      horizontal:7.0,
-                  ),
-                  focusedBorder: const OutlineInputBorder(
-                      borderSide: const BorderSide(
-                        color: Colors.grey,
-                        width: 0.0),
-                    ),
-                    enabledBorder: const OutlineInputBorder(
-                      borderSide: const BorderSide(color: Colors.grey, 
-                      width:0.0),
-                    ),
-                  ),
+              Text("Address 2 : Winter Park, FL, 32792",
+                style: TextStyle(color: Colors.black,
+                  fontSize: 15,
                 ),
               ),
 
-              //address
-              Text('Address 1',
-                style: TextStyle(
-                fontSize:14.0, 
-                fontWeight: FontWeight.w800)
-              ),
-              Padding(
-                padding: EdgeInsets.all(16.0),
-                child: TextFormField(
-                  keyboardType: TextInputType.streetAddress,
-                  controller: _addressController,
-                  decoration: InputDecoration(
-                    labelText: 'Address 1',
-                    hintText: 'Address 1',
-                    hintStyle:TextStyle(color:Color(0xFFCCCCC)),
-                    contentPadding: new EdgeInsets.symmetric(
-                      vertical:14.0, 
-                      horizontal:7.0,
-                  ),
-                  focusedBorder: const OutlineInputBorder(
-                      borderSide: const BorderSide(
-                        color: Colors.grey,
-                        width: 0.0),
-                    ),
-                    enabledBorder: const OutlineInputBorder(
-                      borderSide: const BorderSide(color: Colors.grey, 
-                      width:0.0),
-                    ),
-                  ),
-                ),
-              ),
-              
-              //Address 2 
-              Text('Address 2',
-                style: TextStyle(
-                fontSize:14.0, 
-                fontWeight: FontWeight.w800)
-              ),
-              Padding(
-                padding: EdgeInsets.all(16.0),
-                child: TextFormField(
-                  keyboardType: TextInputType.streetAddress,
-                  controller: _address2Controller,
-                  decoration: InputDecoration(
-                    labelText: 'Address 2',
-                    hintText: 'Address 2',
-                    hintStyle:TextStyle(color:Color(0xFFCCCCC)),
-                    contentPadding: new EdgeInsets.symmetric(
-                      vertical:14.0, 
-                      horizontal:7.0,
-                  ),
-                  focusedBorder: const OutlineInputBorder(
-                      borderSide: const BorderSide(
-                        color: Colors.grey,
-                        width: 0.0),
-                    ),
-                    enabledBorder: const OutlineInputBorder(
-                      borderSide: const BorderSide(color: Colors.grey, 
-                      width:0.0),
-                    ),
-                  ),
-                ),
-              ),
-              Container(
-                  height: 55,
-                  child:RaisedButton(
-                    color: Colors.blue,
-                    shape: RoundedRectangleBorder(
-                      borderRadius:BorderRadius.all(Radius.circular(5))
-                    ),
-                    child: Text('Save', 
-                      style:TextStyle(color:Colors.white,
-                      fontSize:18.0)
-                    ),
-                    onPressed: (){
-                      saveContact();
-                      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) =>MyProfilePage()));
-                                                                          
-                    },
-                  ),                   
-              ),       
             ],
           )
-        )
-      )
-      
+    )
+    //     ListView.builder(
+    // itemCount:profileList.length.compareTo(0),
+    // itemBuilder: (_, index){
+    //             return ProfileUI(
+    //               profileList[index].firstName,
+    //               profileList[index].lastName,
+    //               profileList[index].email,
+    //               profileList[index].address,
+    //               profileList[index].address2,
+    //             );
+    //     },
+    //   ),
     );
   }
-  void saveContact(){
-    String firstname = _firstnameController.text;
-    String lastname = _lastnameController.text;
-    String email = _emailController.text;
-    String pass = _passwordController.text;
-    String address = _addressController.text;
-    String address2 = _address2Controller.text;
 
-    Map<String, String> profile = {
-      'First Name': firstname, 
-      'Last Name' : lastname, 
-      'Email'     : email, 
-      'Password'  : pass, 
-      'Address'   : address,
-      'Address2'  : address2
-    };
-    _ref.push().set(profile).then((value) {
-        Navigator.pop(context);
-    });
+  Widget ProfileUI(String firstName, String lastName, String email, String address, String address2)
+  {
+    return Card(
+      margin: EdgeInsets.all(15),
+      color: Color(0xffff2fc3),
+      child: Container(
+        color:Colors.white,
+        margin: EdgeInsets.all(1.5),
+        padding: EdgeInsets.all(10),
+        child: Column(
+          children: <Widget>[
+            //First Name
+            Text("firstName : $firstName",
+            style: TextStyle(color: Colors.black,
+            fontSize: 25,
+            fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 1,),
+
+            //Last Name
+            Text("Last Name : $lastName",
+              style: TextStyle(color: Colors.black,
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 1,),
+            //_emailController
+            Text("Email : $email",
+              style: TextStyle(color: Colors.black,
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 1,),
+
+            //_addressController
+            Text("Address 1 : $address",
+              style: TextStyle(color: Colors.black,
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 1,),
+
+            //_addressController2
+            Text("Address 2 : $address2",
+              style: TextStyle(color: Colors.black,
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 1,),
+          ],
+        )
+      ),
+    );
   }
 }
