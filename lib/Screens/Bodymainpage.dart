@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:pl2/Screens/History.dart';
+import 'package:pl2/Net/firebase.dart';
 
 class BodyMainPage extends StatefulWidget{
 
@@ -313,17 +314,16 @@ class  _BodyMainPageState extends State<BodyMainPage> {
                   minWidth: 170,
                   height: 60,
                   onPressed: ()  {
-                    saveOrder();
+                    // saveOrder();
+                    DatabaseManager().orderSetup(_buttonDownShirtController.text,
+                        _blouseController.text,
+                        _dressController.text,
+                        _pantsController.text,
+                        _windJacketController.text,
+                    );
                     Navigator.of(context).pushReplacement(MaterialPageRoute(
                         builder: (context) => HistoryPage()));
 
-                    // Validate returns true if the form is valid, or false
-                    // otherwise.
-                    // if (_formKey.currentState.validate()) {
-                    //       // If the form is valid, display a Snackbar.
-                    //   Scaffold.of(context)
-                    //  .showSnackBar(SnackBar(content: Text('Processing Data')));
-                    //  }
                   },
                   color: Colors.blue[900],
                   elevation: 0,
@@ -345,24 +345,24 @@ class  _BodyMainPageState extends State<BodyMainPage> {
     );
   }
 
-  void saveOrder(){
-    String buttondownshirt =  _buttonDownShirtController.text;
-    String blouse =  _blouseController.text;
-    String pants  =  _pantsController.text;
-    String dress =  _dressController.text;
-    String windjacket = _windJacketController.text;
-
-    Map<String, String> order = {
-      'Button Down Shirt': buttondownshirt,
-      'Blouse' : blouse,
-      'Pants'     : pants,
-      'Dress'  : dress,
-      'Wind Jacket'   : windjacket,
-
-    };
-    _ref.push().set(order).then((value) {
-      Navigator.pop(context);
-    });
-  }
+  // void saveOrder(){
+  //   String buttondownshirt =  _buttonDownShirtController.text;
+  //   String blouse =  _blouseController.text;
+  //   String pants  =  _pantsController.text;
+  //   String dress =  _dressController.text;
+  //   String windjacket = _windJacketController.text;
+  //
+  //   Map<String, String> order = {
+  //     'Button Down Shirt': buttondownshirt,
+  //     'Blouse' : blouse,
+  //     'Pants'     : pants,
+  //     'Dress'  : dress,
+  //     'Wind Jacket'   : windjacket,
+  //
+  //   };
+  //   _ref.push().set(order).then((value) {
+  //     Navigator.pop(context);
+  //   });
+  // }
 
 }

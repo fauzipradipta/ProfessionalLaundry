@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
-import 'package:pl2/Models/User_model.dart';
+import 'package:pl2/Models/userData.dart';
 import 'package:pl2/Screens/Mainpage.dart';
 import 'package:firebase_database/firebase_database.dart';
-//import 'package:pl2/src/DataOrder.dart';
 
 class MyProfilePage extends StatefulWidget {
   // MyProfilePage({this.data});
@@ -69,18 +68,73 @@ class _MyProfilePageState extends State<MyProfilePage> {
           ),
         ),
        ),
-      body: profileList.length == 0 ? new Text('No Data Available'):ListView.builder(
-        itemCount: profileList.length,
-        itemBuilder: (_,index){
-                return ProfileUI(
-                  profileList[index].firstName,
-                  profileList[index].lastName,
-                  profileList[index].email,
-                  profileList[index].address,
-                  profileList[index].address2,
-                );
-        },
-      ),
+      body: Container(
+          color:Colors.white,
+          margin: EdgeInsets.all(1.5),
+          padding: EdgeInsets.all(10),
+          child: Column(
+            children: <Widget>[
+              Padding(
+                padding:EdgeInsets.symmetric(horizontal: 8.0),
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: <Widget>[
+                      Text("firstName : Syawadhilah",
+                        style: TextStyle(color: Colors.black,
+                          fontSize: 15,
+                        ),
+                      ),
+                      ]
+                )
+              ),
+
+              Padding(
+                  padding:EdgeInsets.symmetric(horizontal: 8.0),
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: <Widget>[
+                        Text("Last Name : Pradipta",
+                          style: TextStyle(color: Colors.black,
+                            fontSize: 15,
+                          ),
+                        ),
+                      ]
+                  )
+              ),
+
+              Text("Email : dipta0988@gmail.com",
+                style: TextStyle(color: Colors.black,
+                  fontSize: 15,
+                ),
+              ),
+
+              Text("Address : 3000 University Boulevard",
+                style: TextStyle(color: Colors.black,
+                  fontSize: 15,
+                ),
+              ),
+
+              Text("Address 2 : Winter Park, FL, 32792",
+                style: TextStyle(color: Colors.black,
+                  fontSize: 15,
+                ),
+              ),
+
+            ],
+          )
+    )
+    //     ListView.builder(
+    // itemCount:profileList.length.compareTo(0),
+    // itemBuilder: (_, index){
+    //             return ProfileUI(
+    //               profileList[index].firstName,
+    //               profileList[index].lastName,
+    //               profileList[index].email,
+    //               profileList[index].address,
+    //               profileList[index].address2,
+    //             );
+    //     },
+    //   ),
     );
   }
 
