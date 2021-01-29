@@ -143,8 +143,8 @@ class _PaymentPageState extends State<PaymentPage> {
                         // isValid = cardData[CreditCardValidator.isValidCard];
                       });
                     },
-                  ),  
-              ),             
+                  ),
+              ),
             ],
           )
         )

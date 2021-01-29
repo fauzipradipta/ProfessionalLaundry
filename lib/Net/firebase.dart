@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+
 // import 'package:firebase_core/firebase_core.dart';
 
 class DatabaseManager {
@@ -8,11 +9,13 @@ class DatabaseManager {
 
   Future<void> userSetup(String firstName, String lastName, String email,
       String password, String address, String address2) async {
+
     FirebaseAuth auth = FirebaseAuth.instance;
     String uid = auth.currentUser.uid.toString();
 
     users.add({
       'First Name ': firstName,
+
       'Last Name': lastName,
       'Email   ': email,
       'Password ': password,
@@ -22,6 +25,7 @@ class DatabaseManager {
     });
     return;
   }
+
 
   Future<void> orderSetup(String buttonDownShirt, String blouse, String pants,
       String dress, String windJackets) async {
@@ -36,4 +40,5 @@ class DatabaseManager {
     });
     return;
   }
+
 }
