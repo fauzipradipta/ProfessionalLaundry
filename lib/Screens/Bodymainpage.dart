@@ -25,7 +25,7 @@ class  _BodyMainPageState extends State<BodyMainPage> {
   TextEditingController _dressController;
   TextEditingController _windJacketController;
 
-  DatabaseReference _ref;
+  // DatabaseReference _ref;
   final referenceData = FirebaseDatabase.instance;
 
   @override
@@ -37,7 +37,7 @@ class  _BodyMainPageState extends State<BodyMainPage> {
     _dressController = TextEditingController();
     _windJacketController = TextEditingController();
 
-    _ref = FirebaseDatabase.instance.reference().child('Order');
+    // _ref = FirebaseDatabase.instance.reference().child('Order');
 
   }
 
