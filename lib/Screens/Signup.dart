@@ -7,7 +7,7 @@ import 'package:pl2/main.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 // import 'package:firebase_core/firebase_core.dart';
 // import 'package:cloud_firestore/cloud_firestore.dart';
-
+import 'package:pl2/Net/firebase.dart';
 class SignupPage extends StatefulWidget {
 
   final String title = "Registration";
@@ -28,7 +28,7 @@ class _SignupPageState extends State<SignupPage> {
   TextEditingController _addressController = TextEditingController();
   TextEditingController _address2Controller = TextEditingController();
 
- DatabaseReference _ref = FirebaseDatabase.instance.reference().child('Profile');
+//  DatabaseReference _ref = FirebaseDatabase.instance.reference().child('Profile');
 
   final auth = FirebaseAuth.instance;
   @override
@@ -195,21 +195,21 @@ class _SignupPageState extends State<SignupPage> {
                         child: RaisedButton(
                           padding: const EdgeInsets.symmetric(vertical: 16.0),
 
-                          // alignment: Alignment.center,
+                          
                           onPressed: () async {
-                            // Map<String,dynamic> data = {
-                            //   "First Name": _firstNameController.text,
-                            //   "Last Name ": _lastNameController.text,
-                            //   "Email ": _emailController.text,
-                            //   "Address1 ": _addressController.text,
-                            //   "Address2" : _address2Controller.text,
-                            // };
-                            saveProfile();
+                            
                             await auth
                                 .createUserWithEmailAndPassword(
                                 email: _emailController.text,
                                 password: _passwordController.text)
                                 .then((_) async {
+                                  DatabaseManager().userSetup(_firstNameController.text,
+                                      _lastNameController.text,
+                                      _emailController.text,
+                                      _passwordController.text,
+                                      _addressController.text,
+                                      _address2Controller.text
+                                  );
                               Navigator.of(context).pushReplacement(
                                   MaterialPageRoute(
                                       builder: (context) => Mainpage()));
@@ -218,11 +218,7 @@ class _SignupPageState extends State<SignupPage> {
                           child: const Text('Sign Up'),
                         ),
                       ),
-                      // Container(
-                      //   alignment:Alignment.center,
-                      //   child: Text(_success == null ? '' : (_success
-                      //   ? 'Successfully registered' + _userEmail : 'Registration failed')),
-                      // ),
+                      
 
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -246,23 +242,4 @@ class _SignupPageState extends State<SignupPage> {
     );
   }
 
-  void saveProfile(){
-    String firstName = _firstNameController.text;
-    String lastName = _lastNameController.text;
-    String email = _emailController.text;
-    String address = _addressController.text;
-    String address2 = _address2Controller.text;
-
-    Map<String, String> profile ={
-      'First Name ': firstName,
-      'Last Name ': lastName,
-      'Email' : email,
-      'Address ': address,
-      'Address 2': address2,
-    };
-    _ref.push().set(profile).then((value){
-      Navigator.pop(context);
-    });
-
-  }
 }

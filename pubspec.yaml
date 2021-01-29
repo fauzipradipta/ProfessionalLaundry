@@ -34,9 +34,12 @@ dependencies:
   firebase_database: ^6.0.0
   cloud_firestore: ^0.16.0
   firebase_core: ^0.7.0
+  firebase_storage: ^7.0.0
 
   #image Picker 
   image_picker: ^0.6.7+21
+  
+  font_awesome_flutter: ^8.11.0
 
   #timeline_tile for tracking page
   timeline_tile: ^1.0.0
