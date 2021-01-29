@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart'; 
 import 'package:flutter/cupertino.dart';
-import 'package:credit_card_number_validator/credit_card_number_validator.dart';
+// import 'package:credit_card_number_validator/credit_card_number_validator.dart';
 import 'package:pl2/Screens/Mainpage.dart';
 
 class PaymentPage extends StatefulWidget {
@@ -136,11 +136,11 @@ class _PaymentPageState extends State<PaymentPage> {
                     ),
                     onPressed: (){
                       //Get Card Type and Validity Data As Map -@param Card Number
-                      Map cardData = CreditCardValidator.getCard(_cardNumberController.text);                      
+                      // Map cardData = CreditCardValidator.getCard(_cardNumberController.text);                      
                       setState(() {
                         //Set Card Type and Validity
-                        cardType = cardData[CreditCardValidator.cardType];                        
-                        isValid = cardData[CreditCardValidator.isValidCard];
+                        // cardType = cardData[CreditCardValidator.cardType];                        
+                        // isValid = cardData[CreditCardValidator.isValidCard];
                       });
                     },
                   ),  
