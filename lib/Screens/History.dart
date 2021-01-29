@@ -1,8 +1,14 @@
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pl2/Screens/Mainpage.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-// import 'package:firebase_auth/firebase_auth.dart';
+
+
+import 'package:pl2/Net/firebase.dart';
+
+
+
 
 class HistoryPage extends StatefulWidget {
   @override
@@ -64,7 +70,6 @@ class _HistoryPageState extends State<HistoryPage> {
                                 // fontWeight: FontWeight.bold
                               ),
                             ),
-
                             //Pants
                             Text("Pants: " + document['Pants'],
                               style: TextStyle(
@@ -100,6 +105,10 @@ class _HistoryPageState extends State<HistoryPage> {
                 );
            }
          ),
+
+    );
+  }
+
 
     );
   }

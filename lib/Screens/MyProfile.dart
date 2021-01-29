@@ -6,6 +6,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 // import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 // import 'package:firebase_storage/firebase_storage.dart';
 // import 'package:image_picker/image_picker.dart';
+
 class MyProfilePage extends StatefulWidget {
 
   @override
@@ -35,6 +36,7 @@ class _MyProfilePageState extends State<MyProfilePage> {
           ),
         ),
        ),
+
        body: StreamBuilder(
            stream: FirebaseFirestore.instance.collection('Users').snapshots(),
            builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {

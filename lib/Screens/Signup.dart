@@ -197,7 +197,6 @@ class _SignupPageState extends State<SignupPage> {
 
                           
                           onPressed: () async {
-                            
                             await auth
                                 .createUserWithEmailAndPassword(
                                 email: _emailController.text,
@@ -241,5 +240,4 @@ class _SignupPageState extends State<SignupPage> {
       )
     );
   }
-
 }
