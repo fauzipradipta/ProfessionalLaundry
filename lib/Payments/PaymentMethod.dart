@@ -52,11 +52,7 @@ class _PaymentPageState extends State<PaymentPage> {
           child:Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text('Enter Card Number', 
-              style: TextStyle(
-                fontSize:14.0, 
-                fontWeight: FontWeight.w800),
-              ),
+              
               Padding(
                 padding:EdgeInsets.all(16.0),
                 child:TextFormField(
@@ -64,6 +60,7 @@ class _PaymentPageState extends State<PaymentPage> {
                   controller: _cardNumberController, 
                   decoration:InputDecoration(
                     hintText:'Card Number', 
+                    labelText: 'Card Number',
                     hintStyle:TextStyle(color:Color(0xFFCCCCC)),
                     contentPadding: new EdgeInsets.symmetric(
                       vertical:14.0, 
@@ -82,21 +79,16 @@ class _PaymentPageState extends State<PaymentPage> {
                 )
               ),
 
-               Padding(
-                padding:EdgeInsets.all(20), 
-                child: cardType != null ? Text('Card Type: $cardType Card Number Valid: $isValid ',
-                style: TextStyle(
-                  color: isValid ? Colors.green : Colors.red, 
-                  fontSize: 14.0, 
-                  fontWeight: FontWeight.w800
-                ),):Text('n'),
-              ),
-              //Name On Card
-              Text('Name on Card', 
-              style: TextStyle(
-                fontSize:14.0, 
-                fontWeight: FontWeight.w800),
-              ),
+              //  Padding(
+              //   padding:EdgeInsets.all(20), 
+              //   child: cardType != null ? Text('Card Type: $cardType Card Number Valid: $isValid ',
+              //   style: TextStyle(
+              //     color: isValid ? Colors.green : Colors.red, 
+              //     fontSize: 14.0, 
+              //     fontWeight: FontWeight.w800
+              //   ),):Text('n'),
+              // ),
+              
 
               //Name on Card box
               Padding(
@@ -106,6 +98,7 @@ class _PaymentPageState extends State<PaymentPage> {
                   controller: _nameCardController, 
                   decoration:InputDecoration(
                     hintText:'Name on Card', 
+                    labelText: 'Name on Card',
                     hintStyle:TextStyle(color:Color(0xFFCCCCC)),
                     contentPadding: new EdgeInsets.symmetric(
                       vertical:14.0, 
@@ -123,6 +116,61 @@ class _PaymentPageState extends State<PaymentPage> {
                   )
                 )
               ),
+
+              //Expiration Date
+              Padding(
+                padding:EdgeInsets.all(16.0),
+                child:TextFormField(
+                  keyboardType:TextInputType.name,
+                  controller: _nameCardController, 
+                  decoration:InputDecoration(
+                    hintText:'Expiration Date', 
+                    labelText: 'Expiration Date',
+                    hintStyle:TextStyle(color:Color(0xFFCCCCC)),
+                    contentPadding: new EdgeInsets.symmetric(
+                      vertical:14.0, 
+                      horizontal:7.0,
+                    ),
+                    focusedBorder: const OutlineInputBorder(
+                      borderSide: const BorderSide(
+                        color: Colors.grey,
+                        width: 0.0),
+                    ),
+                    enabledBorder: const OutlineInputBorder(
+                      borderSide: const BorderSide(color: Colors.grey, 
+                      width:0.0),
+                    )
+                  )
+                )
+              ),
+              
+              //Security Code 
+              Padding(
+                padding:EdgeInsets.all(16.0),
+                child:TextFormField(
+                  keyboardType:TextInputType.name,
+                  controller: _nameCardController, 
+                  decoration:InputDecoration(
+                    hintText:'Security Code', 
+                    labelText: 'Security Code',
+                    hintStyle:TextStyle(color:Color(0xFFCCCCC)),
+                    contentPadding: new EdgeInsets.symmetric(
+                      vertical:14.0, 
+                      horizontal:7.0,
+                    ),
+                    focusedBorder: const OutlineInputBorder(
+                      borderSide: const BorderSide(
+                        color: Colors.grey,
+                        width: 0.0),
+                    ),
+                    enabledBorder: const OutlineInputBorder(
+                      borderSide: const BorderSide(color: Colors.grey, 
+                      width:0.0),
+                    )
+                  )
+                )
+              ),
+
               Container(
                   height: 55,
                   child:RaisedButton(
