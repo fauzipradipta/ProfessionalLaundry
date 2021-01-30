@@ -16,7 +16,8 @@ class _PaymentPageState extends State<PaymentPage> {
   //Card Number Controller 
   TextEditingController _cardNumberController = TextEditingController();
   TextEditingController _nameCardController = TextEditingController();
-   
+  TextEditingController _expirationCardController = TextEditingController();
+  TextEditingController _securityCardController = TextEditingController();
   //Declare variables To store Card Type and Validity
   String cardType; 
   String nameType;
@@ -121,8 +122,8 @@ class _PaymentPageState extends State<PaymentPage> {
               Padding(
                 padding:EdgeInsets.all(16.0),
                 child:TextFormField(
-                  keyboardType:TextInputType.name,
-                  controller: _nameCardController, 
+                  keyboardType:TextInputType.number,
+                  controller: _expirationCardController, 
                   decoration:InputDecoration(
                     hintText:'Expiration Date', 
                     labelText: 'Expiration Date',
@@ -148,8 +149,8 @@ class _PaymentPageState extends State<PaymentPage> {
               Padding(
                 padding:EdgeInsets.all(16.0),
                 child:TextFormField(
-                  keyboardType:TextInputType.name,
-                  controller: _nameCardController, 
+                  keyboardType:TextInputType.number,
+                  controller: _securityCardController, 
                   decoration:InputDecoration(
                     hintText:'Security Code', 
                     labelText: 'Security Code',
