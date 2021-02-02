@@ -72,16 +72,18 @@ class  _BodyMainPageState extends State<BodyMainPage> {
                     Image.asset('assets/images/buttonDownShirt.jpg'),
                     Padding(
                       padding:  EdgeInsets.only(left:10),
-                      child: Text('Button Down Shirt',
+                      child: Text('Button Down Shirt   3.00  ',
                           style: TextStyle(
                               fontWeight:FontWeight.w600,
                               color: Colors.white,
                               fontSize: 15
                           )
                       ),
+
                     ),
+                    
                     Padding(
-                      padding: EdgeInsets.only(left:55),
+                      padding: EdgeInsets.only(left:20),
                       child: SizedBox(
                         width: 100,
                         child: TextFormField(

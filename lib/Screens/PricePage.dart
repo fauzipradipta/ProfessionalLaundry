@@ -35,7 +35,25 @@ class _PricePageState extends State<PricePage> {
             mainAxisAlignment:MainAxisAlignment.start,
             
             children:[
-              
+              Padding(
+                padding:EdgeInsets.only(top:10),
+                child: Row(
+                  children: <Widget>[
+                    Padding(
+                      padding:EdgeInsets.only(left:300),
+
+                      child: Text('   Price',
+                          style: TextStyle(
+                              fontWeight:FontWeight.bold,
+                              color: Colors.black,
+                              fontSize: 15,
+                          )
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
             //Button Down Shirt
             Padding(
               padding: EdgeInsets.only(top:20),
@@ -53,9 +71,10 @@ class _PricePageState extends State<PricePage> {
                                 ),
                   ),
 
+
                   Padding(
-                    padding:EdgeInsets.only(left:100), 
-                    child: Text('    3', 
+                    padding:EdgeInsets.only(left:100),
+                    child: Text('    3.00',
                                   style: TextStyle(
                                     fontWeight:FontWeight.w600,
                                     color: Colors.black,
@@ -86,7 +105,7 @@ class _PricePageState extends State<PricePage> {
 
                   Padding(
                     padding:EdgeInsets.only(left:190), 
-                    child: Text('   6', 
+                    child: Text('   6.00',
                                   style: TextStyle(
                                     fontWeight:FontWeight.w600,
                                     color: Colors.black,
@@ -117,7 +136,7 @@ class _PricePageState extends State<PricePage> {
 
                   Padding(
                     padding:EdgeInsets.only(left:140), 
-                    child: Text('   6', 
+                    child: Text('   6.00',
                                   style: TextStyle(
                                     fontWeight:FontWeight.w600,
                                     color: Colors.black,
@@ -148,7 +167,7 @@ class _PricePageState extends State<PricePage> {
 
                   Padding(
                     padding:EdgeInsets.only(left:185), 
-                    child: Text('   9', 
+                    child: Text('   9.00',
                                   style: TextStyle(
                                     fontWeight:FontWeight.w600,
                                     color: Colors.black,
@@ -179,7 +198,7 @@ class _PricePageState extends State<PricePage> {
 
                   Padding(
                     padding:EdgeInsets.only(left:180), 
-                    child: Text('   5', 
+                    child: Text('   5.00',
                                   style: TextStyle(
                                     fontWeight:FontWeight.w600,
                                     color: Colors.black,
@@ -192,10 +211,7 @@ class _PricePageState extends State<PricePage> {
             ),
           ]
         )
-       
       )
-      
-
     );
   }
 }
