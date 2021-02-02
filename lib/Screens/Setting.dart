@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:pl/Screens/Login.dart';
-import 'package:pl/Screens/MyProfile.dart';
-import 'package:pl/Screens/History.dart';
-import 'package:pl/Screens/PaymentMethod.dart';
+ import 'package:pl2/Screens/Signin.dart';
+import 'package:pl2/Screens/MyProfile.dart';
+import 'package:pl2/Screens/History.dart';
+import 'package:pl2/Payments/PaymentMethod.dart';
 
 class SettingPage extends StatefulWidget{
   @override
@@ -94,7 +94,7 @@ class _SettingPage extends State<SettingPage>{
 
                       onPressed: (){
                         auth.signOut();
-                        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => LoginPage()));
+                        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => SigninPage()));
                       },
                      child: Text('LogOut', style: TextStyle(
                                  fontWeight:FontWeight.w600,
@@ -108,6 +108,5 @@ class _SettingPage extends State<SettingPage>{
             ),
           ),
         );
-
   }
 }

@@ -1,50 +1,38 @@
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+//import 'package:pl2/Screens/LiabilityPage.dart';
+import 'package:pl2/Screens/Mainpage.dart';
+import 'package:pl2/main.dart'; 
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:pl/Screens/Liabiltypage.dart';
-import 'package:pl/main.dart';
-
+// import 'package:firebase_core/firebase_core.dart';
+// import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:pl2/Net/firebase.dart';
 class SignupPage extends StatefulWidget {
-  final String title = 'Registration';
+
+  final String title = "Registration";
+
+  final referenceData = FirebaseDatabase.instance;
   @override
-  _SignupPage createState() => _SignupPage();
+  _SignupPageState createState() => _SignupPageState();
 }
 
-class _SignupPage extends State<SignupPage> {
-  //final GlobalKey<FormState> _formKey = GlobalKey<FormState>();        //Validating the user's Email and Password
+class _SignupPageState extends State<SignupPage> {
+  //final _formKey = GlobalKey<FormState>();
 
-  //Tracking all the changes to those text file
+  //Tracking all changes to the file
   TextEditingController _emailController = TextEditingController();
-  TextEditingController nameController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
-  TextEditingController ageController = TextEditingController();
+  TextEditingController _firstNameController = TextEditingController();
+  TextEditingController _lastNameController = TextEditingController();
+  TextEditingController _addressController = TextEditingController();
+  TextEditingController _address2Controller = TextEditingController();
 
-  // bool _success;
+//  DatabaseReference _ref = FirebaseDatabase.instance.reference().child('Profile');
+
   final auth = FirebaseAuth.instance;
-  //node.js
-  //var email;
-  //var password;
-
-  bool checkBoxValue = false;
-
-  // Widget checkbox(String title, bool boolValue) {
-  //   return Column(
-  //       mainAxisAlignment: MainAxisAlignment.center,
-  //       children: <Widget>[
-  //         Text(title),
-  //         Checkbox(
-  //             value: boolValue,
-  //             onChanged: (bool value) {
-  //               //manage state value
-  //               setState(() {
-  //                 checkBoxValue = value;
-  //               });
-  //             })
-  //       ]);
-  // }
-
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) {  
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: Colors.blueAccent[700],
@@ -62,17 +50,18 @@ class _SignupPage extends State<SignupPage> {
           ),
         ),
       ),
+
       body: Form(
-        //key: _formKey,
         child: SingleChildScrollView(
           child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 40),
-            height: MediaQuery.of(context).size.height,
+            padding: EdgeInsets.symmetric(horizontal:40), 
+            height:MediaQuery.of(context).size.height, 
             width: double.infinity,
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                Expanded(
+              mainAxisAlignment:MainAxisAlignment.spaceEvenly, 
+              children:<Widget>[
+                //Expanded Element on the Widget
+                 Expanded(
                   //Expanded to expand element on the page
                   child: Column(
                     children: <Widget>[
@@ -94,13 +83,46 @@ class _SignupPage extends State<SignupPage> {
                           ),
                         ],
                       ),
+
+                      //First Name
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: 8.0),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: <Widget>[
                             TextFormField(
-                              keyboardType: TextInputType.emailAddress,
+                              // keyboardType: TextInputType.name,
+                              controller: _firstNameController,
+                              decoration:
+                              const InputDecoration(labelText: "First Name"),
+                            ),
+                          ],
+                        ),
+                      ),
+
+                      //Last Name
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 8.0),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: <Widget>[
+                            TextFormField(
+                              // keyboardType: TextInputType.name,
+                              controller: _lastNameController,
+                              decoration:
+                              const InputDecoration(labelText: "Last Name"),
+                            ),
+                          ],
+                        ),
+                      ),
+                      //Email
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 8.0),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: <Widget>[
+                            TextFormField(
+                              // keyboardType: TextInputType.emailAddress,
                               controller: _emailController,
                               decoration:
                               const InputDecoration(labelText: "Email"),
@@ -115,6 +137,7 @@ class _SignupPage extends State<SignupPage> {
                         ),
                       ),
 
+                      //Password
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Column(
@@ -135,55 +158,66 @@ class _SignupPage extends State<SignupPage> {
                           ],
                         ),
                       ),
-                      // makeInput(label: "Email"),
-                      // makeInput(label: "Password", obscureText:true),
-                      // makeInput(label: "Confirm Password", obscureText: true),
-                      // makeInput(label: "Birth of Data"),
-                      // makeInput(label: "Home Address"),
 
-                      //Check Box for Liability Page
+                      //Address
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 8.0),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: <Widget>[
+                            TextFormField(
+                              // keyboardType: TextInputType.streetAddress,
+                              controller: _addressController,
+                              decoration:
+                              const InputDecoration(labelText: "Address 1"),
+                            ),
+                          ],
+                        ),
+                      ),
 
-                      // Column(
-                      //   mainAxisAlignment: MainAxisAlignment.center,
-                      //   children: <Widget>[
-                      //     checkbox("Liability Page", checkBoxValue),
-                      //   ],
-                      // ),
-
-                      // padding: EdgeInsets.symmetric(horizontal: 40),
-                      // child:Container(
-                      //   padding: EdgeInsets.only(top:3, left:3),
-                      //   decoration: BoxDecoration(
-                      //     border: Border(
-                      //     bottom:BorderSide(color: Colors.blue[900]),
-                      //     top:BorderSide(color: Colors.blue[900]),
-                      //     right:BorderSide(color: Colors.blue[900]),
-                      //     left:BorderSide(color: Colors.blue[900]),
-                      //     ),
-                      //   ),
+                      //Address 2
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 8.0),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: <Widget>[
+                            TextFormField(
+                              // keyboardType: TextInputType.streetAddress,
+                              controller: _address2Controller,
+                              decoration:
+                              const InputDecoration(labelText: "Address 2"),
+                            ),
+                          ],
+                        ),
+                      ),
+                     
                       Container(
                         child: RaisedButton(
                           padding: const EdgeInsets.symmetric(vertical: 16.0),
-                          // alignment: Alignment.center,
+
+                          
                           onPressed: () async {
                             await auth
                                 .createUserWithEmailAndPassword(
                                 email: _emailController.text,
                                 password: _passwordController.text)
                                 .then((_) async {
+                                  DatabaseManager().userSetup(_firstNameController.text,
+                                      _lastNameController.text,
+                                      _emailController.text,
+                                      _passwordController.text,
+                                      _addressController.text,
+                                      _address2Controller.text
+                                  );
                               Navigator.of(context).pushReplacement(
                                   MaterialPageRoute(
-                                      builder: (context) => LiabilityPage()));
+                                      builder: (context) => Mainpage()));
                             });
                           },
                           child: const Text('Sign Up'),
                         ),
                       ),
-                      // Container(
-                      //   alignment:Alignment.center,
-                      //   child: Text(_success == null ? '' : (_success
-                      //   ? 'Successfully registered' + _userEmail : 'Registration failed')),
-                      // ),
+                      
 
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -198,38 +232,12 @@ class _SignupPage extends State<SignupPage> {
                       ),
                     ],
                   ),
-                ),
-              ],
-            ),
-          ),
+                ), 
+              ]
+            ) ,
+          )
         ),
-      ),
-    );
-  }
-
-  Widget makeInput({label, obscureText = false}) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Text(
-          label,
-          style: TextStyle(
-              fontSize: 15, fontWeight: FontWeight.w400, color: Colors.black87),
-        ),
-        SizedBox(
-          height: 5,
-        ),
-        TextField(
-          obscureText: obscureText,
-          decoration: InputDecoration(
-              contentPadding: EdgeInsets.symmetric(vertical: 0, horizontal: 10),
-              enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.grey[400])),
-              border: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.grey[400]))),
-        ),
-        //SizedBox(height: 30,),
-      ],
+      )
     );
   }
 }

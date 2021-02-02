@@ -1,24 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-//import 'package:pl/Screens/Setting.dart';
-import 'package:pl/Screens/Mainpage.dart';
+import 'package:pl2/Screens/Mainpage.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
-class HistoryPage extends StatelessWidget
-{
-  final buttonDownShirtHolder; 
-  final blouseHolder; 
-  final pantsHolder; 
-  final dressHolder; 
-  final windJacketHolder; 
 
-  HistoryPage({
-    Key key, this.buttonDownShirtHolder,
-    this.blouseHolder, 
-    this.pantsHolder, 
-    this.dressHolder, 
-    this.windJacketHolder
-  }) : super(key: key);
 
+class HistoryPage extends StatefulWidget {
+  @override
+  _HistoryPageState createState() => _HistoryPageState();
+}
+
+class _HistoryPageState extends State<HistoryPage> {
 
   @override
   Widget build(BuildContext context) {
@@ -28,49 +20,87 @@ class HistoryPage extends StatelessWidget
       appBar: AppBar(
         brightness: Brightness.light,
         backgroundColor: Colors.blueAccent[700],
+        title: Text('History'),
         leading: IconButton(
           onPressed: (){
-            Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) =>  Mainpage()));            
+            Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) =>  Mainpage()));
           },
           icon: Icon(Icons.arrow_back_ios, size:20, color:Colors.white,),
         ),
       ),
 
-      body:Column(
-        mainAxisAlignment: MainAxisAlignment.start, 
-        children: <Widget>[
-          Container(child:           
-            Text('Button Down Shirt ' + buttonDownShirtHolder,
-            style: TextStyle(fontSize: 15, color:Colors.white), 
-            textAlign: TextAlign.center,)
-          ),
-          
-          Container(child: 
-            Text('Blouse ' + blouseHolder,
-            style: TextStyle(fontSize: 15, color:Colors.white), 
-            textAlign: TextAlign.center,
-            )
-          ),
+         body: StreamBuilder(
+            stream: FirebaseFirestore.instance.collection('Order').snapshots(), 
+            builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+                if(!snapshot.hasData){
+                  return Center(
+                    child: CircularProgressIndicator(),
+                  );
+                }
 
-          Container(child: 
-            Text('Pants ' + pantsHolder,
-            style: TextStyle(fontSize: 15, color:Colors.white), 
-            textAlign: TextAlign.center,)
-          ),
+                return ListView(
+                  children:snapshot.data.docs.map((document){
+                    return Card(
+                      margin: EdgeInsets.all(15),
+                      color:Color(0xffff2fc3),
+                      child: Container(
+                        color:Colors.white,
+                        margin: EdgeInsets.all(1.5),
+                        padding: EdgeInsets.all(10),
+                        child: Column(
+                          children: <Widget>[
+                            Text("Button Down shirt: " + document['Button Down Shirt'],
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 25,
+                                // fontWeight: FontWeight.bold
+                              ),
+                            ),
 
-          Container(child: 
-            Text('Dress ' + dressHolder,
-            style:TextStyle(fontSize: 15, color:Colors.white), 
-            textAlign: TextAlign.center,)
-          ),
+                            //Blouse
+                            Text("Blouse: " + document['Blouse'],
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 25,
+                                // fontWeight: FontWeight.bold
+                              ),
+                            ),
+                            //Pants
+                            Text("Pants: " + document['Pants'],
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 25,
+                                // fontWeight: FontWeight.bold
+                              ),
+                            ),
 
-          Container(child: 
-            Text('Wind Jacket ' + windJacketHolder,
-            style: TextStyle(fontSize: 15, color:Colors.white), 
-            textAlign: TextAlign.center,)
-          ),
-        ]
-      )
+                            //Dress
+                            Text("Dress: " + document['dress'],
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 25,
+                                // fontWeight: FontWeight.bold
+                              ),
+                            ),
+
+                            //Wind Jacket
+
+                            Text("Wind Jacket: " + document['Wind Jacket'],
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 25,
+                                // fontWeight: FontWeight.bold
+                              ),
+                            ),
+                          ],
+                        )
+                      ),
+                    );
+                  }).toList()
+                );
+           }
+         ),
+
     );
   }
-}
+ }
