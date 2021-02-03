@@ -1,4 +1,4 @@
-# pl2
+# Professional Laundry
 
 A new Flutter project.
 
