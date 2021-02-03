@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:pl2/Screens/TrackingPage.dart';
-import 'package:pl2/Screens/Setting.dart';
-import 'package:pl2/Screens/Bodymainpage.dart';
+import 'package:pl2/Screens/Home.dart';
+//import 'package:pl2/Screens/Bodymainpage.dart';
 import 'package:pl2/Screens/PricePage.dart';
 import 'package:pl2/Screens/Help.dart';
 // import 'package:firebase_core/firebase_core.dart';
@@ -17,9 +17,8 @@ class _MainpageState extends State<Mainpage> {
   
   int _currentIndex = 0;
   final List<Widget> _widgetOptions = [
-    BodyMainPage(),
-    TrackingPage(),
     SettingPage(),
+    TrackingPage(),
     PricePage(),
     HelpPage() 
   ];
@@ -39,9 +38,9 @@ class _MainpageState extends State<Mainpage> {
 
         items: [
            BottomNavigationBarItem(
-              icon: Icon(Icons.outlet_rounded),
+              icon: Icon(Icons.settings),
               // ignore: deprecated_member_use
-              title: Text("Order"),
+              title: Text("Setting"),
               backgroundColor: Colors.black),
 
           BottomNavigationBarItem(
@@ -50,11 +49,11 @@ class _MainpageState extends State<Mainpage> {
               title: Text("Tracking"),
               backgroundColor: Colors.black),
 
-          BottomNavigationBarItem(
-              icon: Icon(Icons.settings),
-              // ignore: deprecated_member_use
-              title: Text("Setting"),
-              backgroundColor: Colors.black),
+          // BottomNavigationBarItem(
+          //     icon: Icon(Icons.settings),
+          //     // ignore: deprecated_member_use
+          //     title: Text("Setting"),
+          //     backgroundColor: Colors.black),
           BottomNavigationBarItem(
               icon: Icon(Icons.monetization_on),
               // ignore: deprecated_member_use
