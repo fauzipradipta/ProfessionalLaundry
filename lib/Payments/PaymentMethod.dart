@@ -51,7 +51,7 @@ class _PaymentPageState extends State<PaymentPage> {
       body: Center(
         child:Container(
           child:Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               
               Padding(
@@ -185,7 +185,9 @@ class _PaymentPageState extends State<PaymentPage> {
                     ),
                     onPressed: (){
                       //Get Card Type and Validity Data As Map -@param Card Number
-                      // Map cardData = CreditCardValidator.getCard(_cardNumberController.text);                      
+                      // Map cardData = CreditCardValidator.getCard(_cardNumberController.text);
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(
+                          builder: (context) => Mainpage()));
                       setState(() {
                         //Set Card Type and Validity
                         // cardType = cardData[CreditCardValidator.cardType];                        
