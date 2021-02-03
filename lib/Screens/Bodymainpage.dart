@@ -4,6 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:pl2/Screens/History.dart';
 import 'package:pl2/Net/firebase.dart';
+import 'package:pl2/Payments/PaymentMethod.dart';
 
 class BodyMainPage extends StatefulWidget{
 
@@ -70,18 +71,36 @@ class  _BodyMainPageState extends State<BodyMainPage> {
                 child: Row(
                   children:<Widget> [
                     Image.asset('assets/images/buttonDownShirt.jpg'),
+
                     Padding(
                       padding:  EdgeInsets.only(left:10),
-                      child: Text('Button Down Shirt',
-                          style: TextStyle(
-                              fontWeight:FontWeight.w600,
-                              color: Colors.white,
-                              fontSize: 15
-                          )
+                      child:Column(
+                        children: <Widget>[
+                          Text( 'Button Down Shirt  ',
+                              style: TextStyle(
+                                  fontWeight:FontWeight.w600,
+                                  color: Colors.white,
+                                  fontSize: 15
+                              )
+                          ),
+                        Container(
+                            child:Align(
+                              alignment:Alignment.bottomLeft,
+                                child:Text('3.00  ',
+                                    style: TextStyle(
+                                      fontWeight:FontWeight.w600,
+                                      color: Colors.white,
+                                      fontSize: 15,
+                                    ),
+                                ),
+                            ),
+                        ),
+
+                        ],
                       ),
                     ),
-                    Padding(
-                      padding: EdgeInsets.only(left:55),
+                     Padding(
+                      padding: EdgeInsets.only(left:20),
                       child: SizedBox(
                         width: 100,
                         child: TextFormField(
@@ -118,13 +137,30 @@ class  _BodyMainPageState extends State<BodyMainPage> {
                   children: [
                     Image.asset('assets/images/blouse.jpg'),
                     Padding(
-                      padding: const EdgeInsets.only(left: 20),
-                      child: Text('Blouse',
-                          style: TextStyle(
-                              fontWeight:FontWeight.w600,
-                              color: Colors.white,
-                              fontSize: 15
-                          )
+                      padding:  EdgeInsets.only(left:10),
+                      child:Column(
+                        children: <Widget>[
+                          Text( 'Blouse  ',
+                              style: TextStyle(
+                                  fontWeight:FontWeight.w600,
+                                  color: Colors.white,
+                                  fontSize: 15
+                              )
+                          ),
+                          Container(
+                            child:Align(
+                              alignment:Alignment.bottomLeft,
+                              child:Text('5.00  ',
+                                style: TextStyle(
+                                  fontWeight:FontWeight.w600,
+                                  color: Colors.white,
+                                  fontSize: 15,
+                                ),
+                              ),
+                            ),
+                          ),
+
+                        ],
                       ),
                     ),
                     Padding(
@@ -163,13 +199,30 @@ class  _BodyMainPageState extends State<BodyMainPage> {
                   children: [
                     Image.asset('assets/images/pants.jpg'),
                     Padding(
-                      padding: EdgeInsets.only(left:30),
-                      child: Text('Pants',
-                          style: TextStyle(
-                              fontWeight:FontWeight.w600,
-                              color: Colors.white,
-                              fontSize: 15
-                          )
+                      padding:  EdgeInsets.only(left:10),
+                      child:Column(
+                        children: <Widget>[
+                          Text( 'Pants  ',
+                              style: TextStyle(
+                                  fontWeight:FontWeight.w600,
+                                  color: Colors.white,
+                                  fontSize: 15
+                              )
+                          ),
+                          Container(
+                            child:Align(
+                              alignment:Alignment.bottomLeft,
+                              child:Text('5.00  ',
+                                style: TextStyle(
+                                  fontWeight:FontWeight.w600,
+                                  color: Colors.white,
+                                  fontSize: 15,
+                                ),
+                              ),
+                            ),
+                          ),
+
+                        ],
                       ),
                     ),
                     Padding(
@@ -208,13 +261,30 @@ class  _BodyMainPageState extends State<BodyMainPage> {
                   children: [
                     Image.asset('assets/images/dress.jpg'),
                     Padding(
-                      padding: EdgeInsets.only(left:15),
-                      child: Text('Dress',
-                          style: TextStyle(
-                              fontWeight:FontWeight.w600,
-                              color: Colors.white,
-                              fontSize: 15
-                          )
+                      padding:  EdgeInsets.only(left:10),
+                      child:Column(
+                        children: <Widget>[
+                          Text( 'Dress  ',
+                              style: TextStyle(
+                                  fontWeight:FontWeight.w600,
+                                  color: Colors.white,
+                                  fontSize: 15
+                              )
+                          ),
+                          Container(
+                            child:Align(
+                              alignment:Alignment.bottomLeft,
+                              child:Text('9.00  ',
+                                style: TextStyle(
+                                  fontWeight:FontWeight.w600,
+                                  color: Colors.white,
+                                  fontSize: 15,
+                                ),
+                              ),
+                            ),
+                          ),
+
+                        ],
                       ),
                     ),
                     Padding(
@@ -254,13 +324,30 @@ class  _BodyMainPageState extends State<BodyMainPage> {
                   children: [
                     Image.asset('assets/images/windjacket.jpg'),
                     Padding(
-                      padding: EdgeInsets.only(left: 15),
-                      child: Text('Wind Jacket',
-                          style: TextStyle(
-                              fontWeight:FontWeight.w600,
-                              color: Colors.white,
-                              fontSize: 15
-                          )
+                      padding:  EdgeInsets.only(left:10),
+                      child:Column(
+                        children: <Widget>[
+                          Text( 'Wind Jacket  ',
+                              style: TextStyle(
+                                  fontWeight:FontWeight.w600,
+                                  color: Colors.white,
+                                  fontSize: 15
+                              )
+                          ),
+                          Container(
+                            child:Align(
+                              alignment:Alignment.bottomLeft,
+                              child:Text('9.00  ',
+                                style: TextStyle(
+                                  fontWeight:FontWeight.w600,
+                                  color: Colors.white,
+                                  fontSize: 15,
+                                ),
+                              ),
+                            ),
+                          ),
+
+                        ],
                       ),
                     ),
                     Padding(
@@ -322,7 +409,7 @@ class  _BodyMainPageState extends State<BodyMainPage> {
                         _windJacketController.text,
                     );
                     Navigator.of(context).pushReplacement(MaterialPageRoute(
-                        builder: (context) => HistoryPage()));
+                        builder: (context) => PaymentPage()));
 
                   },
                   color: Colors.blue[900],
