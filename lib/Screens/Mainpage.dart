@@ -40,7 +40,7 @@ class _MainpageState extends State<Mainpage> {
            BottomNavigationBarItem(
               icon: Icon(Icons.settings),
               // ignore: deprecated_member_use
-              title: Text("Setting"),
+              title: Text("Order"),
               backgroundColor: Colors.black),
 
           BottomNavigationBarItem(
