@@ -39,7 +39,7 @@ class _TrackingPageState extends State<TrackingPage> with TickerProviderStateMix
   // ];
   //int _counter = 0; 
   AnimationController _controller; 
-  int levelClock = 1800;
+  int levelClock = 180;
 
   // void _incrementCounter(){
   //   setState(() {
