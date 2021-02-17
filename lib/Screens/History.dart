@@ -29,7 +29,8 @@ class _HistoryPageState extends State<HistoryPage> {
         ),
       ),
 
-         body: StreamBuilder(
+         body: 
+         StreamBuilder(
             stream: FirebaseFirestore.instance.collection('Order').snapshots(), 
             builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
                 if(!snapshot.hasData){

@@ -1,41 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
-import 'package:pl2/Screens/User.dart';
-import 'package:firebase_core/firebase_core.dart';
+import 'package:pl2/Screens/Signin.dart';
+import 'package:pl2/Screens/Signup.dart';
 
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
-
-  runApp(
-    MaterialApp(
-      debugShowCheckedModeBanner:false, 
-      home: User(),
-    )
-  );
+class User extends StatefulWidget {
+  @override
+  _UserState createState() => _UserState();
 }
 
-class HomePage extends StatefulWidget{
-
+class _UserState extends State<User> {
   @override
-  _HomePageState createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  @override
-  void initState() {
-    Firebase.initializeApp();
-    super.initState();
-  }
-
-  @override 
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.blueAccent[700],      //Background Color
       body: SafeArea(
         child: Container(
-          width: double.infinity,
+
+        width: double.infinity,
           height:MediaQuery.of(context).size.height,
           padding: EdgeInsets.symmetric(horizontal:30, vertical: 30),
           child: Column(
@@ -65,7 +47,7 @@ class _HomePageState extends State<HomePage> {
                   )
                 ),
               ),
-              //User side
+              //Login
               Column(
                 children: <Widget>[
                   MaterialButton(
@@ -73,7 +55,7 @@ class _HomePageState extends State<HomePage> {
                     height: 60, 
                     onPressed:() {
                      //future: Firebase.initializeApp();
-                     Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => User()));
+                     Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => SigninPage()));
                     }, 
                     color:Colors.blue[900],
                     shape: RoundedRectangleBorder(
@@ -82,7 +64,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                       borderRadius: BorderRadius.circular(50)
                     ),
-                    child: Text('User', style: TextStyle(
+                    child: Text('Login', style: TextStyle(
                       fontWeight:FontWeight.w600,
                       color: Colors.white,
                       fontSize: 18 ),
@@ -95,25 +77,25 @@ class _HomePageState extends State<HomePage> {
                     //
                     // ),
                   
-                    //Company Side
-                    // child: MaterialButton(
-                    //   minWidth: double.infinity,
-                    //   height: 60,
-                    //   onPressed:() {
-                    //     //future: Firebase.initializeApp();
-                    //     Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => Tracking()));
-                    //   }, 
-                    //   color:Colors.blue[900],
-                    //   elevation: 0,
-                    //   shape: RoundedRectangleBorder(              
-                    //     borderRadius: BorderRadius.circular(50)
-                    //   ),  
-                    //   child: Text('Tracking', style: TextStyle(
-                    //     fontWeight: FontWeight.w600,
-                    //     color: Colors.white,
-                    //     fontSize: 18 
-                    //     ),),
-                    // ), 
+                    //Signup
+                    child: MaterialButton(
+                      minWidth: double.infinity,
+                      height: 60,
+                      onPressed:() {
+                        //future: Firebase.initializeApp();
+                        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => SignupPage()));
+                      }, 
+                      color:Colors.blue[900],
+                      elevation: 0,
+                      shape: RoundedRectangleBorder(              
+                        borderRadius: BorderRadius.circular(50)
+                      ),  
+                      child: Text('SignUp', style: TextStyle(
+                        fontWeight: FontWeight.w600,
+                        color: Colors.white,
+                        fontSize: 18 
+                        ),),
+                    ), 
                    )
                 ],
               ),
@@ -122,6 +104,5 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
     );
-  }  
+  }
 }
-

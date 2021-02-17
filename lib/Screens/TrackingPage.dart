@@ -2,9 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 // import 'package:sticky_headers/sticky_headers/widget.dart';
-import 'package:timeline_tile/timeline_tile.dart';
+// import 'package:timeline_tile/timeline_tile.dart';
 import 'package:google_fonts/google_fonts.dart';
 // import 'package:sticky_headers/sticky_headers.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'dart:core';
 
 class TrackingPage extends StatefulWidget {
@@ -78,171 +79,145 @@ class _TrackingPageState extends State<TrackingPage> with TickerProviderStateMix
       appBar: AppBar(
         title: Text('Tracking Order'),
       ),
-      body:ListView(
-        shrinkWrap: true,
-        children:<Widget>[         
-          Padding(
-            padding: const EdgeInsets.all(10),            
-            child: Row(
-              children: <Widget>[
-                  Expanded(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
+      body:
+      
+      // ListView(
+      //   shrinkWrap: true,
+      //   children:<Widget>[         
+      //     Padding(
+      //       padding: const EdgeInsets.all(10),            
+      //       child: Row(
+      //         children: <Widget>[
+      //             Expanded(
+      //               child: Column(
+      //                 mainAxisSize: MainAxisSize.min,
                       
-                      children:<Widget>[                        
-                          Text('Estimated Time',
-                           style: GoogleFonts.yantramanav(
-                            color: Colors.blue[900],
-                            fontSize: 30,                            
-                           ),
-                          ),
+      //                 children:<Widget>[                        
+      //                     Text('Estimated Time',
+      //                      style: GoogleFonts.yantramanav(
+      //                       color: Colors.blue[900],
+      //                       fontSize: 30,                            
+      //                      ),
+      //                     ),
 
-                          // Text('30 Minutes',
-                          //  style: GoogleFonts.yantramanav(
-                          //  color: Colors.blue[900],
-                          //  fontSize: 30,
-                          // ),
-                          //)
+      //                     // Text('30 Minutes',
+      //                     //  style: GoogleFonts.yantramanav(
+      //                     //  color: Colors.blue[900],
+      //                     //  fontSize: 30,
+      //                     // ),
+      //                     //)
                            
-                          //Countdown
-                           Countdown(
-                            animation: StepTween(
-                              begin: levelClock, // THIS IS A USER ENTERED NUMBER
-                              end: 0,
-                            ).animate(_controller),
-                          ),
+      //                     //Countdown
+      //                      Countdown(
+      //                       animation: StepTween(
+      //                         begin: levelClock, // THIS IS A USER ENTERED NUMBER
+      //                         end: 0,
+      //                       ).animate(_controller),
+      //                     ),
                 
-                      ],
-                    )
-                  )
-              ],
-            )
-          ),
+      //                 ],
+      //               )
+      //             )
+      //         ],
+      //       )
+      //     ),
 
-          TimelineTile(
-            alignment:TimelineAlign.manual, 
-            lineXY: 0.1, 
-            isFirst: true, 
-            indicatorStyle: const IndicatorStyle(
-              width: 20,
-              color:Color(0xFFDADADA), 
-              padding: EdgeInsets.all(6),
-            ),
-            
-            endChild: const _RightChild(
-                // asset: 'assets/order_placed.png',
-                
-                title: 'Order Received',
-                message: 'Your order has been confirmed',
-            ),
-            beforeLineStyle: const LineStyle(
-              color: Colors.grey,
-            ),
-          ),
 
-           TimelineTile(
-            alignment:TimelineAlign.manual, 
-            lineXY: 0.1, 
-            isFirst: true, 
-            indicatorStyle: const IndicatorStyle(
-              width: 20,
-              color:Color(0xFFDADADA), 
-              padding: EdgeInsets.all(6),
-            ),
-            
-            endChild: const _RightChild(
-                // asset: 'assets/order_placed.png',
-                title: 'Order on Progress',
-                message: '',
-            ),
-            beforeLineStyle: const LineStyle(
-              color: Colors.grey,
-            ),
-          ),
-
-           TimelineTile(
-            alignment:TimelineAlign.manual, 
-            lineXY: 0.1, 
-            isFirst: true, 
-            indicatorStyle: const IndicatorStyle(
-              width: 20,
-              color:Color(0xFFDADADA), 
-              padding: EdgeInsets.all(6),
-            ),
-            
-            endChild: const _RightChild(
-                // asset: 'assets/order_placed.png',
-                title: 'Has Been Delivered ',
-                message: '',
-            ),
-            beforeLineStyle: const LineStyle(
-              color: Colors.grey,
-            ),
-          ),
-
-        ]
-      ),
+         StreamBuilder<QuerySnapshot>(
+           stream: FirebaseFirestore.instance.collection('Picked Up').snapshots(),
+           builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot){
+             if(!snapshot.hasData){
+               return Center(
+                 child: CircularProgressIndicator(),
+               );
+             }
+             return ListView(
+                  children:snapshot.data.docs.map((document){
+                    return Card(
+                      margin: EdgeInsets.all(15),
+                      color:Color(0xffff2fc3),
+                      child: Container(
+                        color:Colors.white,
+                        margin: EdgeInsets.all(1.5),
+                        padding: EdgeInsets.all(10),
+                        child: Column(
+                          children: <Widget>[
+                            Text("Order Received: " + document['Order Received '],
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 25,
+                                // fontWeight: FontWeight.bold
+                              ),
+                            ),
+                          ],
+                        )
+                      ),
+                    );                    
+                  }).toList()
+                );
+           }
+          )        
     );
   }  
 }
 
-class _RightChild extends StatelessWidget {
-  const _RightChild({
-    Key key,
-    this.asset,
-    this.title,
-    this.message,
-    this.disabled = false,
-  }) : super(key: key);
+// class _RightChild extends StatelessWidget {
+//   const _RightChild({
+//     Key key,
+//     this.asset,
+//     this.title,
+//     this.message,
+//     this.disabled = false,
+//   }) : super(key: key);
 
-  final String asset;
-  final String title;
-  final String message;
-  final bool disabled;
+//   final String asset;
+//   final String title;
+//   final String message;
+//   final bool disabled;
 
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Row(
-        children: <Widget>[
-          // Opacity(
-          //   child: Image.asset(asset, height: 50),
-          //   opacity: disabled ? 0.5 : 1,
-          // ),
-          const SizedBox(width: 16),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              Text(
-                title,
-                style: GoogleFonts.yantramanav(
-                  color: disabled
-                      ? const Color(0xFFBABABA)
-                      : const Color(0xFF636564),
-                  fontSize: 18,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-              const SizedBox(height: 6),
-              Text(
-                message,
-                style: GoogleFonts.yantramanav(
-                  color: disabled
-                      ? const Color(0xFFD5D5D5)
-                      : const Color(0xFF636564),
-                  fontSize: 16,
-                ),
-              ),
-            ],
-          ),
-        ],
-      ),
-    );
-  }
+//   @override
+//   Widget build(BuildContext context) {
+//     return Padding(
+//       padding: const EdgeInsets.all(16.0),
+//       child: Row(
+//         children: <Widget>[
+//           // Opacity(
+//           //   child: Image.asset(asset, height: 50),
+//           //   opacity: disabled ? 0.5 : 1,
+//           // ),
+//           const SizedBox(width: 16),
+//           Column(
+//             crossAxisAlignment: CrossAxisAlignment.start,
+//             mainAxisSize: MainAxisSize.min,
+//             children: <Widget>[
+//               Text(
+//                 title,
+//                 style: GoogleFonts.yantramanav(
+//                   color: disabled
+//                       ? const Color(0xFFBABABA)
+//                       : const Color(0xFF636564),
+//                   fontSize: 18,
+//                   fontWeight: FontWeight.w500,
+//                 ),
+//               ),
+//               const SizedBox(height: 6),
+//               Text(
+//                 message,
+//                 style: GoogleFonts.yantramanav(
+//                   color: disabled
+//                       ? const Color(0xFFD5D5D5)
+//                       : const Color(0xFF636564),
+//                   fontSize: 16,
+//                 ),
+//               ),
+//             ],
+//           ),
+//         ],
+//       ),
+//     );
+//   }
   
-}
+// }
 
 // ignore: must_be_immutable
 class Countdown extends AnimatedWidget {
