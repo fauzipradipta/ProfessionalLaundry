@@ -1,193 +1,281 @@
+// import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
-// import 'package:pl2/Screens/User.dart';
-import 'package:timeline_tile/timeline_tile.dart';
-import 'package:google_fonts/google_fonts.dart';
-// import 'package:pl2/Screens/TrackingPage.dart';
 
-class Tracking extends StatefulWidget {
-  @override
-  _TrackingState createState() => _TrackingState();
+import 'package:firebase_core/firebase_core.dart';
+import'package:pl2/Screens/CompanyApp/Text.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+
+  runApp(
+    MaterialApp(
+      debugShowCheckedModeBanner:false,
+      home:MyApp(),
+    ),
+  );
 }
 
-class _TrackingState extends State<Tracking> {
-   // int current_step = 0;
-  // List<Step> steps = [
-  //     Step(
-  //       title: Text("Order Received"),
-  //       content: Text('Hello!'),
-  //       isActive: false,
-  //     ),
-  //     Step(
-  //       title: Text("Order on Progress"), 
-  //       content: Text("Hello"),
-  //       isActive: false,
-  //     ),
-  //     Step(
-  //       title:Text("Order has been delivered to you"),
-  //       content:Text("Hello1"),
-  //       state: StepState.complete,
-  //       isActive: false,
-  //     )
-  // ];
-  //int _counter = 0; 
-    
+class MyApp extends StatefulWidget {
+  MyApp({Key key, this.title}) : super(key: key);
+
+  final String title;
+
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  // var selectedType;
+  // String _orderReceived = 'Yes';
+  String uid = '';
+  // List<String> option = <String>['Yes','No'];
+  TextEditingController _receivedController = TextEditingController();
+  TextEditingController _onProgressController = TextEditingController();
+  TextEditingController _deliveredController = TextEditingController();
+
+
+  @override
+  void initState() {
+    Firebase.initializeApp();
+    super.initState();
+  }
+  // updateData(String progressOrder,String uid){
+  //   OrderPickedup().progressConfirm(progressOrder, uid);
+  // }
   @override
   Widget build(BuildContext context) {
-    //Date and Time
-    
 
     return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        title: Text('Tracking Order'),
-      ),
-      body:ListView(
-        shrinkWrap: true,
-        children:<Widget>[         
-        
-          TimelineTile(
-            alignment:TimelineAlign.manual, 
-            lineXY: 0.1, 
-            isFirst: true, 
-            indicatorStyle: const IndicatorStyle(
-              width: 20,
-              color:Color(0xFFDADADA), 
-              padding: EdgeInsets.all(6),
+        appBar: AppBar(
+
+          title: Text('Order  Confirmation'),
+        ),
+        body:
+        SingleChildScrollView(
+          clipBehavior: Clip.none,
+          child: SafeArea(
+
+            //Order Received
+            child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+
+                child:Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    Column(
+                      children: <Widget>[
+                        Text("Put your update for every progress'",
+                          style:TextStyle(fontSize: 15, color: Colors.black),
+                        )
+                      ],
+                    ),
+
+                    //Order Received
+                    Padding(
+                        padding: EdgeInsets.only(top:25),
+                        child: Row(
+                          children: <Widget>[
+                            Padding(
+                                padding: EdgeInsets.only(left:10),
+                                child: Column(
+                                  children: <Widget>[
+                                    Text('Order Received',
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                  ],
+                                )
+                            ),
+
+                            // Order received input
+                            Padding(
+                                padding: EdgeInsets.only(left:20),
+                                child: SizedBox(
+                                  width:100,
+                                  child: TextFormField(
+                                    controller: _receivedController,
+                                    style:TextStyle(
+                                        color: Colors.black
+                                    ),
+                                    decoration: InputDecoration(
+                                      hintText: "put your respond",
+                                      hintStyle: TextStyle(
+                                        fontSize: 12,
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                  ),
+                                )
+
+
+                            ),
+
+                            //Order Received Button
+                            Padding(
+                              padding: EdgeInsets.only(left:30),
+                              child: MaterialButton(onPressed: (){
+                                OrderPickedup().orderConfirm(_receivedController.text);
+                                Navigator.of(context).pushReplacement(MaterialPageRoute(
+
+                                    builder: (context) => MyApp()));
+                              },
+                                  color: Colors.blue[300],
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(30)
+                                  ),
+                                  child: Text('Received',
+                                    style: TextStyle(
+                                        color:Colors.white
+                                    ),)
+                              ),
+                            ),
+
+                          ],
+                        )
+                    ),
+
+                    //On Progress
+                    Padding(
+                      padding: EdgeInsets.only(top:20),
+                      child: Row(
+                        children: <Widget>[
+                          Padding(
+                              padding: EdgeInsets.only(left:10),
+                              child:Column(
+                                  children:<Widget>[
+                                    Text('Start Washing',
+                                      style:
+                                      TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                  ]
+                              )
+                          ),
+                          // Order ProgressDropDown
+                          Padding(
+                              padding: EdgeInsets.only(left:20),
+                              child: SizedBox(
+                                width:100,
+                                child: TextFormField(
+                                  controller: _onProgressController,
+                                  style:TextStyle(
+                                      color: Colors.black
+                                  ),
+                                  decoration: InputDecoration(
+                                    hintText: "put your respond",
+                                    hintStyle: TextStyle(
+                                      fontSize: 12,
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                ),
+                              )
+                          ),
+                          //Order Progress Button
+                          Padding(
+                            padding: EdgeInsets.only(left:30),
+                            child: MaterialButton(
+                                onPressed: (){
+                                  OrderPickedup().progressConfirm(_onProgressController.text);
+                                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                                      builder: (context) => MyApp()));
+                                  // submitAction(context);
+                                  // Navigator.pop(context);
+                                },
+                                color: Colors.blue[300],
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(30)
+                                ),
+                                child: Text('Progress',
+                                  style: TextStyle(
+                                      color:Colors.white
+                                  ),)
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+
+                    //Order Delivered
+                    Padding(
+                      padding: EdgeInsets.only(top:20),
+                      child: Row(
+                        children: <Widget>[
+                          Padding(
+                              padding: EdgeInsets.only(left:10),
+                              child:Column(
+                                  children:<Widget>[
+                                    Text('Order Delivered',
+                                      style:
+                                      TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                  ]
+                              )
+                          ),
+
+                          // Order Delivered
+                          Padding(
+                              padding: EdgeInsets.only(left:20),
+                              child: SizedBox(
+                                width:100,
+                                child: TextFormField(
+                                  controller: _deliveredController,
+                                  style:TextStyle(
+                                      color: Colors.black
+                                  ),
+                                  decoration: InputDecoration(
+                                    hintText: "put your respond",
+                                    hintStyle: TextStyle(
+                                      fontSize: 12,
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                ),
+                              )
+                          ),
+                          //Order Delivered Button
+                          Padding(
+                            padding: EdgeInsets.only(left:30),
+                            child: MaterialButton(
+                                onPressed: (){
+                                  OrderPickedup().deliveredConfirm(_deliveredController.text);
+                                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                                      builder: (context) => MyApp()));
+                                },
+                                color: Colors.blue[300],
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(30)
+                                ),
+                                child: Text('Delivered',
+                                  style: TextStyle(
+                                      color:Colors.white
+                                  ),)
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+
+
+                  ],
+                )
             ),
-            
-            endChild: const _RightChild(
-                // asset: 'assets/order_placed.png',
-                
-                title: 'Order Received',
-                message: 'Your order has been confirmed',
-            ),
-            beforeLineStyle: const LineStyle(
-              color: Colors.grey,
-            ),
+
+
           ),
-
-          //Button
-
-          // MaterialButton(
-          //         minWidth: double.infinity,
-          //         height: 60, 
-          //         onPressed:() {
-          //           //future: Firebase.initializeApp();
-          //           String pickedup ="Picked Up";
-
-          //           Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => SigninPage()));
-          //         }, 
-          //         color:Colors.blue[900],
-          //         shape: RoundedRectangleBorder(
-          //         side: BorderSide(
-          //             color: Colors.black
-          //           ),
-          //             borderRadius: BorderRadius.circular(50)
-          //         ),
-          // ),
-
-          TimelineTile(
-            alignment:TimelineAlign.manual, 
-            lineXY: 0.1, 
-            isFirst: true, 
-            indicatorStyle: const IndicatorStyle(
-              width: 20,
-              color:Color(0xFFDADADA), 
-              padding: EdgeInsets.all(6),
-            ),
-              
-            endChild: const _RightChild(
-                // asset: 'assets/order_placed.png',
-                title: 'Order on Progress',
-                message: '',
-            ),
-            beforeLineStyle: const LineStyle(
-              color: Colors.grey,
-            ),
-          ),
-
-           TimelineTile(
-            alignment:TimelineAlign.manual, 
-            lineXY: 0.1, 
-            isFirst: true, 
-            indicatorStyle: const IndicatorStyle(
-              width: 20,
-              color:Color(0xFFDADADA), 
-              padding: EdgeInsets.all(6),
-            ),
-            
-            endChild: const _RightChild(
-                // asset: 'assets/order_placed.png',
-                title: 'Has Been Delivered ',
-                message: '',
-            ),
-            beforeLineStyle: const LineStyle(
-              color: Colors.grey,
-            ),
-          ),
-
-        ]
-      ),
-    );
-  }  
-}
-
-class _RightChild extends StatelessWidget {
-  const _RightChild({
-    Key key,
-    this.asset,
-    this.title,
-    this.message,
-    this.disabled = false,
-  }) : super(key: key);
-
-  final String asset;
-  final String title;
-  final String message;
-  final bool disabled;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Row(
-        children: <Widget>[
-          // Opacity(
-          //   child: Image.asset(asset, height: 50),
-          //   opacity: disabled ? 0.5 : 1,
-          // ),
-          const SizedBox(width: 16),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              Text(
-                title,
-                style: GoogleFonts.yantramanav(
-                  color: disabled
-                      ? const Color(0xFFBABABA)
-                      : const Color(0xFF636564),
-                  fontSize: 18,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-              const SizedBox(height: 6),
-              Text(
-                message,
-                style: GoogleFonts.yantramanav(
-                  color: disabled
-                      ? const Color(0xFFD5D5D5)
-                      : const Color(0xFF636564),
-                  fontSize: 16,
-                ),
-              ),
-            ],
-          ),
-        ],
-      ),
+        )
     );
   }
-  
+// submitAction(BuildContext context){
+//     updateData(_onProgressController.text, uid);
+//     _receivedController.clear();
+// }
 }
