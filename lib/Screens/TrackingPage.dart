@@ -111,13 +111,13 @@ class _TrackingPageState extends State<TrackingPage> with TickerProviderStateMix
             //   ),
             // ),
 
-            // Text(
-            //   "Order Received: Yes" ,
-            //   style: TextStyle(
-            //     color: Colors.black,
-            //     fontSize: 25,
-            //   ),
-            // ),
+            Text(
+              "Order Received: Yes" ,
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 25,
+              ),
+            ),
 
             // Text(
             //   "Order Received: No" ,
@@ -128,13 +128,13 @@ class _TrackingPageState extends State<TrackingPage> with TickerProviderStateMix
             // ),
 
             // order on progress
-            // Text(
-            //   "order on progress: Yes" ,
-            //   style: TextStyle(
-            //     color: Colors.black,
-            //     fontSize: 25,
-            //   ),
-            // ),
+            Text(
+              "order on progress: Yes" ,
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 25,
+              ),
+            ),
 
             // Text(
             //   "order on progress: No" ,
@@ -146,13 +146,13 @@ class _TrackingPageState extends State<TrackingPage> with TickerProviderStateMix
 
             //order has been delivered
 
-            // Text(
-            //   "order has been delivered: Yes" ,
-            //   style: TextStyle(
-            //     color: Colors.black,
-            //     fontSize: 25,
-            //   ),
-            // ),
+            Text(
+              "order has been delivered: Yes" ,
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 25,
+              ),
+            ),
 
             // Text(
             //   "order has been delivered: No" ,

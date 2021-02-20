@@ -450,25 +450,6 @@ class  _BodyMainPageState extends State<BodyMainPage> {
         ),
     );
   }
-
-  // void saveOrder(){
-  //   String buttondownshirt =  _buttonDownShirtController.text;
-  //   String blouse =  _blouseController.text;
-  //   String pants  =  _pantsController.text;
-  //   String dress =  _dressController.text;
-  //   String windjacket = _windJacketController.text;
-  //
-  //   Map<String, String> order = {
-  //     'Button Down Shirt': buttondownshirt,
-  //     'Blouse' : blouse,
-  //     'Pants'     : pants,
-  //     'Dress'  : dress,
-  //     'Wind Jacket'   : windjacket,
-  //
-  //   };
-  //   _ref.push().set(order).then((value) {
-  //     Navigator.pop(context);
-  //   });
-  // }
-
 }
+
+
