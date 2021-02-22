@@ -146,13 +146,13 @@ class _TrackingPageState extends State<TrackingPage> with TickerProviderStateMix
 
             //order has been delivered
 
-            Text(
-              "order has been delivered: Yes" ,
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 25,
-              ),
-            ),
+            // Text(
+            //   "order has been delivered: Yes" ,
+            //   style: TextStyle(
+            //     color: Colors.black,
+            //     fontSize: 25,
+            //   ),
+            // ),
 
             // Text(
             //   "order has been delivered: No" ,
